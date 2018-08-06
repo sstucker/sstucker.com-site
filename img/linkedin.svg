@@ -1,0 +1,16 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <title>icon</title>
+  <g>
+    <ellipse class="cls-1" cx="32.59" cy="27.74" rx="5.54" ry="5.58"/>
+    <rect class="cls-1" x="27.84" y="37.34" width="9.5" height="34.82"/>
+    <path class="cls-1" d="M53.17,54.42c0-9.85,12.66-10.66,12.66,0V72.16h9.5V50.76c0-16.63-17.73-16-22.16-7.84V37.34h-9.5V72.16h9.5Z"/>
+    <path class="cls-1" d="M0,0V100H100V0ZM88,88H12V12H88Z"/>
+  </g>
+</svg>
