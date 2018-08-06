@@ -1,0 +1,504 @@
+<!doctype html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,500,700" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://www.promisejs.org/polyfills/promise-done-7.0.4.min.js"></script>
+<script src="https://necolas.github.io/normalize.css/8.0.0/normalize.css"></script>
+<meta name="viewport" content="width=device-width" />
+<style>
+@supports (-webkit-appearance:none) {
+}
+html, body {
+	font-family: 'Work Sans', sans-serif;
+	background-color: white;
+	overflow: hidden;
+}
+#bg {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover !important;
+	background-image: url(follicle.jpeg);
+}
+#main {
+	position: absolute;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: white;
+	height: 25vw;
+	width: 25vw;
+	align-self: middle;
+	font-size: 2vw;
+	-webkit-transition: 0.2s;
+	-moz-transition: 0.2s;
+	-o-transition: 0.2s;
+	transition: 0.2s;
+}
+
+@media screen and (min-width: 966px) {
+#about, portfolio {
+	font-size: 20px;
+}
+}
+
+@media screen and (max-width: 965px) and (min-width: 568px) {
+#main {
+	height: 40vw;
+	width: 40vw;
+	font-size: 3vw;
+}
+#about, #portfolio {
+	font-size: 16px;
+}
+}
+
+@media screen and (min-width: 321px) and (max-width: 567px) {
+#main {
+	height: 60vw;
+	width: 60vw;
+	font-size: 4.5vw;
+}
+#about, portfolio {
+	font-size: 18px;
+}
+}
+
+@media screen and (max-width: 320px) {
+#main {
+	height: 60vw;
+	width: 60vw;
+	font-size: 5.5vw;
+}
+#about, portfolio {
+	font-size: 10px;
+}
+}
+#about {
+	height: 100%;
+	display: none;
+	opacity: 0;
+	padding-left: 2vw;
+	padding-right: 2vw;
+	overflow-y: scroll;
+}
+::-webkit-scrollbar {
+ width: 0px;  /* remove scrollbar space */
+ background: transparent;  /* optional: just make scrollbar invisible */
+}
+.backbutton {
+	display: inherit;
+	position: absolute;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover !important;
+	background-image: url(follicle.jpeg);
+	z-index: 2;
+}
+.backbutton svg {
+	fill: white;	
+}
+#about .backbutton {
+	fill: white;
+	right: 2.5vw;
+	top: 1.5vw;
+	height: 2.5vw;
+	width: 2.5vw;
+}
+#about .backbutton:hover {
+	fill-opacity: 0.2;
+}
+#contact .backbutton {
+	right: -3vw;
+	top: 10px;
+	height: 3vw;
+	width: 3vw;
+	fill: white;
+}
+#contact .backbutton:hover {
+	fill-opacity: 0.2;
+}
+#portfolio .backbutton {
+	fill: lightgrey;
+	color: lightgrey;
+	right: 2.5vw;
+	top: 2vw;
+	height: 2.5vw;
+	width: 2.5vw;
+}
+#portfolio .backbutton:hover {
+	fill-opacity: 0.2;
+}
+#about > p {
+	font-weight: 200;
+	color: black;
+	display: inherit;
+	-webkit-transition: 0.4s;
+	-moz-transition: 0.4s;
+	-o-transition: 0.4s;
+	transition: 0.4s;
+}
+#about p > a {
+	color: black;
+	font-weight: 300;
+	text-decoration: none;
+	background-color: white;
+}
+#about p a:hover {
+	-webkit-text-fill-color: white;
+	-webkit-background-clip: transparent;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover !important;
+	background-image: url(follicle.jpeg);
+}
+#mainmenu {
+	font-weight: 100;
+	height: 40%;
+	padding-top: 40%;
+}
+#name {
+	position: absolute;
+	size: inherit;
+	height: 10%;
+	width: 95%;
+	margin-left: 5%;
+	margin-top: 10%;
+	padding-left: 5px;
+	padding-right: 5px;
+	z-index: 2;
+}
+#name p, #portheader p {
+	font-weight: 700;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover !important;
+	background-image: url(follicle.jpeg);
+}
+ @-moz-document url-prefix() {
+ #name p, #portheader p {
+ -webkit-text-fill-color: black !important;
+ background-image: none !important;
+ font-weight: 100 !important;
+ -webkit-background-clip: none !important;
+ color: black !important;
+}
+}
+.menuitem {
+	size: inherit;
+	padding-left: 5%;
+	height: 20%;
+}
+.menuitem a {
+	color: black;
+	margin: auto;
+	line-height: 100%;
+	text-decoration: none;
+	padding: 0;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.menuitem a:hover {
+	-webkit-text-fill-color: white;
+	-webkit-background-clip: transparent;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover !important;
+	background-image: url(follicle.jpeg);
+	font-weight: 300;
+}
+#contact {
+	display: none;
+	position: absolute;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	align-self: middle;
+	background-color: none;
+}
+.quarter {
+	display: none;
+	fill: white;
+	color: white;
+	width: 50%;
+	height: 50%;
+	float: left;
+	margin: 0%;
+	-webkit-transition: 0.4s;
+	-moz-transition: 0.4s;
+	-o-transition: 0.4s;
+	transition: 0.4s;
+}
+#footer {
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 300;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+#footer p {
+	color: white;
+	padding-right: 20px;
+}
+#portfolio {
+	height: 100%;
+	width: 100%;
+	display: none;
+	overflow-y: scroll;
+}
+#portheader {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 6vw;
+	background-color: #EFEFEE;
+	z-index: 1;
+}
+#portheader p {
+	font-size: 5vw;
+	line-height: 100%;
+	margin-top: 0.5vw;
+	margin-left: 3vw;
+	
+}
+.portpage {
+	position: relative;
+	display: none;
+	margin-left: 20%;
+	margin-right: 20%;
+	width: 60%;
+	height: 1000px;
+	background-color: none;
+	top: 6vw;
+}
+.portpage p {
+	font-weight: 200;
+	font-size: 18px;
+	margin-left: 3vw;
+}
+.portpage img {
+	opacity: 0;
+	background: black;
+}
+#gallery {
+	position: relative;
+	top: 18vw;
+	width: 60%;
+	margin: 0 auto;
+	overflow: auto;
+	opacity: 0;
+	text-align:center;
+}
+.thumbnail {
+	display: inline-block;
+	width: 200px;
+	height: 200px;
+	margin: 20px;
+	background: lightgrey;
+}
+.thumbnail > div {
+	position: relative;
+	size: 100%;	
+}
+.thumbnail a {
+	size: 100%;	
+}
+.thumbnail img {
+	height: 200px;
+	width: 200px;
+	top: 0;
+}
+.thumbnail_inner {
+	position: absolute;
+	opacity: 0;
+}
+.thumbnail_caption {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	right: 20px;
+	color: white;
+	font-weight: 300;
+	font-size: 18px;
+	opacity: 0;
+	text-align: left;
+}
+</style>
+<meta charset="utf-8">
+<title>Stephen Tucker</title>
+</head>
+<body>
+<div id="bg"></div>
+<div id="main">
+  
+  
+  
+  <div id="about">
+    <div class="backbutton"><a href="#back"><svg id="closeicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <polygon class="cls-1" points="202.5 63.83 176.5 37.83 120.16 94.16 63.83 37.83 37.83 63.83 94.16 120.16 37.83 176.5 63.83 202.5 120.16 146.16 176.5 202.5 202.5 176.5 146.16 120.16 202.5 63.83"/></svg></a></div>
+    <p>Hi! I'm Stephen.</p>
+    <p>I'm a 20 year-old student, scientist, designer, and tinkerer studying biomedical engineering with a bit of physics at Boston University! I love Python, science communication and art, life science industrial design, synthetic biology, and neural imaging.</p>
+    <p>Right now, I'm working on visually engaging and physically insightful models of <a href="">quantum atoms</a>, and a series of artistic simulations depicting molecular <a href="">abiogenesis</a>.</p>
+    <p>You can get in touch with me on <a href="">Twitter</a> and <a href="">Linkedin</a>. Please <a href="">email</a> me with inquiries, or for a resume!</p>
+    <p>Thanks for visiting my website.</p>
+  </div>
+  
+  
+  
+  
+  
+  <div id="portfolio">
+    <div id="portheader">
+    <p>PORTFOLIO</p>
+    <div class="backbutton"><a href="#back"><svg id="closeicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <polygon class="cls-1" points="202.5 63.83 176.5 37.83 120.16 94.16 63.83 37.83 37.83 63.83 94.16 120.16 37.83 176.5 63.83 202.5 120.16 146.16 176.5 202.5 202.5 176.5 146.16 120.16 202.5 63.83"/></svg></a></div>
+    </div>
+    <div class="portpage" id="page_electron"><img src='electron3.gif'style='width: 100%'>
+    <p>This is some content that may appear after a particular entry is selected from the list below.</p>
+    <p>This paragraph contains information about the project. Inspired by Kevvy Quikandz, ceramic and found objects constitute this tryptch depiction of Bangladeshi throat singing. The relationship between 6-carbon rings and the evolution of Armenian politics following the global economic crisis of 2008 is shown through the procedural generation of new relationships between nodes of a neural network trained on his Mr. Quikhandz' Google Calendar data.</p>
+    <img src='electron1.gif' class='fade-in'style='width: 33%'><img src='electron2.gif' class='fade-in'style='width: 33%'><img src='electron3.gif'class='fade-in'style='width: 33%'>
+    </div>
+    <div id="gallery">
+    
+    <div class="thumbnail"><div><a href="#" id="thumbnail_electron"><img src="bone.jpeg">
+    <div class="thumbnail_inner"></div><div class="thumbnail_caption">Animated visual models of classic single-electron atoms and water molecules w/ Mayavi</div></a></div></div>
+    
+    <div class="thumbnail"><div><a href="#" id="thumbnail_electron"><img src="follicle.jpeg">
+    <div class="thumbnail_inner"></div><div class="thumbnail_caption">Cute + robust physics engine from scratch in Python x OpenGL</div></div></a></div>
+    
+    <div class="thumbnail"><div><a href="#" id="thumbnail_electron"><img src="stomach.jpeg">
+    <div class="thumbnail_inner"></div><div class="thumbnail_caption">From scratch simulations towards a public art installation depicting abiogenesis</div></div></a></div>
+    
+    </div>
+    </div>
+  
+  
+  <div id="contact">
+    <div class="backbutton"><a href="#back"><svg id="closeicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <polygon class="cls-1" points="202.5 63.83 176.5 37.83 120.16 94.16 63.83 37.83 37.83 63.83 94.16 120.16 37.83 176.5 63.83 202.5 120.16 146.16 176.5 202.5 202.5 176.5 146.16 120.16 202.5 63.83"/></svg></a></div>
+    <div class="quarter"><a href="#contact"><img src=linkedin.svg></a></div>
+    <div class="quarter"><a href="#contact"><img src=twitter.svg></a></div>
+    <div class="quarter"><a href="#contact"><img src=phone.svg></a></div>
+    <div class="quarter"><a href="#contact"><img src=mail.svg></a></div>
+  </div>
+  
+  
+  <div id="name">
+    <p>STEPHEN TUCKER</p>
+  </div>
+  <div id="mainmenu">
+    <div class="menuitem"><a href="#" id="a1">ABOUT</a></div>
+    <div class="menuitem"><a href="#" id="a2">PORTFOLIO</a></div>
+    <div class="menuitem"><a href="#" id="a3">BLOG</a></div>
+    <div class="menuitem"><a href="#" id="a4">RESEARCH</a></div>
+    <div class="menuitem"><a href="#" id="a5">CONTACT</a></div>
+  </div>
+</div>
+<div id="footer">
+  <p>©2018 - STEPHEN TUCKER</p>
+</div>
+<script>
+function preload(arrayOfImages) {
+    $(arrayOfImages).each(function(){
+        $('<img/>')[0].src = this;
+    });
+}
+preload([
+    'electron1.gif',
+    'electron2.gif',
+    'electron3.gif'
+]);
+</script>
+<script>
+function closeWindow (e) {
+	$('#main').css({"width":"","height":"","background-color":""});
+	$('#mainmenu').css("display","");
+	$('#main > #name').css("display","");
+	$('#about').css("display","");
+	$('#about').css("opacity","");
+	$('#portfolio').css("display","");
+	$('#gallery').css("opacity","");
+	$('#contact').css("display","");
+	$('.portpage img').css("opacity","");
+	$('#footer').css("display","");
+	$('.portpage').css("display","");
+}
+$('#a1').click(function(){
+    $('#main').css({"width":"50vw","height":"50vw"});
+	$('#mainmenu').css("display","none");
+	$('#main > #name').css("display","none");
+	$('#about').css("display","inherit");
+	$('#about').fadeTo(500,1.0);
+});
+$('#a2').click(function(){
+	$('#main').css({"width":"80%","height":"100%"});
+	$('#mainmenu').css("display","none");
+	$('#portfolio').css("display","inherit");
+	$('#main > #name').css("display","none");
+	$('#footer').css("display","none");
+	$('#gallery').fadeTo(1000,1.0);
+});
+$('#a5').click(function(){
+	$('#main').css("background","none");
+	$('#mainmenu').css("display","none");
+	$('#main > #name').css("display","none");
+	$('#contact').css("display","inherit");
+	$(".quarter").css({"display":"inherit","width":"44%","height":"44%","margin":"3%"});
+});
+</script> 
+<script>
+$('.backbutton').click(function(){
+	closeWindow();
+});
+$('#bg').click(function(){
+	closeWindow();
+});
+$(document).keyup(function(e) {
+     if (e.keyCode == 27) { // escape key maps to keycode `27`
+        closeWindow();
+    }
+});
+</script>
+<script>
+$('#thumbnail_electron').click(function(){
+	$('.portpage').css("display","");
+	$('#page_electron').css("display","inline-block");
+	$('.portpage img').fadeTo(500,1);
+});
+$('.thumbnail').mouseenter(function(){
+	$(this).find("img").css("opacity","0.1");
+	$(this).find("div").css("opacity","1.0");
+});
+$('.thumbnail').mouseleave(function(){
+	$(this).find("img").css("opacity","");
+	$(this).find("div").css("opacity","");
+});
+</script>
+</body>
+</html>
