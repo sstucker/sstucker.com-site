@@ -26,7 +26,7 @@ html, body {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover !important;
-	background-image: url("img/follicle.jpeg");
+	background-image: url("img/follicle.jpg");
 }
 #main {
 	position: absolute;
@@ -105,11 +105,11 @@ html, body {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover !important;
-	background-image: url( "img/follicle.jpeg" );
+	background-image: url( "img/follicle.jpg" );
 	z-index: 2;
 }
 .backbutton svg {
-	fill: white;	
+	fill: white;
 }
 #about .backbutton {
 	fill: white;
@@ -119,7 +119,7 @@ html, body {
 	width: 2.5vw;
 }
 #about .backbutton:hover {
-	fill-opacity: 0.2;
+	fill-opacity: 0.4;
 }
 #contact .backbutton {
 	right: -3vw;
@@ -129,7 +129,7 @@ html, body {
 	fill: white;
 }
 #contact .backbutton:hover {
-	fill-opacity: 0.2;
+	fill-opacity: 0.4;
 }
 #portfolio .backbutton {
 	fill: lightgrey;
@@ -140,7 +140,7 @@ html, body {
 	width: 2.5vw;
 }
 #portfolio .backbutton:hover {
-	fill-opacity: 0.2;
+	fill-opacity: 0.4;
 }
 #about > p {
 	font-weight: 200;
@@ -166,7 +166,7 @@ html, body {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover !important;
-	background-image: url( "img/follicle.jpeg" );
+	background-image: url( "img/follicle.jpg" );
 }
 #mainmenu {
 	font-weight: 100;
@@ -194,7 +194,7 @@ html, body {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover !important;
-	background-image: url( "img/follicle.jpeg" );
+	background-image: url( "img/follicle.jpg" );
 }
  @-moz-document url-prefix() {
  #name p, #portheader p {
@@ -228,7 +228,7 @@ html, body {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover !important;
-	background-image: url( "img/follicle.jpeg" );
+	background-image: url( "img/follicle.jpg" );
 	font-weight: 300;
 }
 #contact {
@@ -285,7 +285,6 @@ html, body {
 	line-height: 100%;
 	margin-top: 0.5vw;
 	margin-left: 3vw;
-	
 }
 .portpage {
 	position: relative;
@@ -293,7 +292,7 @@ html, body {
 	margin-left: 20%;
 	margin-right: 20%;
 	width: 60%;
-	height: 1000px;
+	height: 600px;
 	background-color: none;
 	top: 6vw;
 }
@@ -313,7 +312,7 @@ html, body {
 	margin: 0 auto;
 	overflow: auto;
 	opacity: 0;
-	text-align:center;
+	text-align: center;
 }
 .thumbnail {
 	display: inline-block;
@@ -324,15 +323,15 @@ html, body {
 }
 .thumbnail > div {
 	position: relative;
-	size: 100%;	
+	size: 100%;
 }
 .thumbnail a {
-	size: 100%;	
+	size: 100%;
 }
 .thumbnail img {
-	height: 200px;
 	width: 200px;
 	top: 0;
+	overflow: hidden;
 }
 .thumbnail_inner {
 	position: absolute;
@@ -349,6 +348,11 @@ html, body {
 	opacity: 0;
 	text-align: left;
 }
+#page_electron img {
+	width: 50%;
+	margin: 0 auto;
+	display: block;
+}
 </style>
 <meta charset="utf-8">
 <title>Stephen Tucker</title>
@@ -356,70 +360,76 @@ html, body {
 <body>
 <div id="bg"></div>
 <div id="main">
-  
-  
-  
   <div id="about">
-    <div class="backbutton"><a href="#back"><svg id="closeicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
-  <polygon class="cls-1" points="202.5 63.83 176.5 37.83 120.16 94.16 63.83 37.83 37.83 63.83 94.16 120.16 37.83 176.5 63.83 202.5 120.16 146.16 176.5 202.5 202.5 176.5 146.16 120.16 202.5 63.83"/></svg></a></div>
+    <div class="backbutton"><a href="#back">
+      <svg id="closeicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+        <polygon class="cls-1" points="202.5 63.83 176.5 37.83 120.16 94.16 63.83 37.83 37.83 63.83 94.16 120.16 37.83 176.5 63.83 202.5 120.16 146.16 176.5 202.5 202.5 176.5 146.16 120.16 202.5 63.83"/>
+      </svg>
+      </a></div>
     <p>Hi! I'm Stephen.</p>
-    <p>I'm a 20 year-old student, scientist, designer, and tinkerer studying biomedical engineering at Boston University! I love Python, science communication, computer-aided art and design, synthetic biology, and neural imaging.</p>
-    <p>Right now, I'm working on visually engaging and physically insightful models of <a>quantum atoms</a>, and a series of artistic genetic simulations that will soon depict molecular <a>abiogenesis</a>.</p>
-    <p>You can get in touch with me on <a href="">Twitter</a> and <a href="">Linkedin</a>. Please <a href="">email</a> me with inquiries, or for a resume!</p>
-    <p>Thanks for visiting my website.</p>
+    <p>I'm a 20 year-old student, scientist, designer, and tinkerer studying biomedical engineering at Boston University! I love Python, science communication, computer-aided art and design, synthetic biology, and biological imaging.</p>
+    <p>Right now, I'm working on visually engaging models of quantum atoms and a series of artistic genetic simulations that will soon depict molecular abiogenesis.</p>
+    <p>You can get in touch with me on <a href="https://twitter.com/thebuggerfactor">Twitter</a> and <a href="https://www.linkedin.com/in/stephen-tucker-ab8817128/">Linkedin</a>. Please <a href="mailto:sstucker@bu.edu">email</a> me with inquiries, or for a resume!</p>
+    <p>Thanks for visiting my (very much unfinished!) website, check out the source on my <a href="https://github.com/sstucker">GitHub.</a></p>
   </div>
-  
-  
-  
-  
-  
   <div id="portfolio">
     <div id="portheader">
-    <p>PORTFOLIO</p>
-    <div class="backbutton"><a href="#back"><svg id="closeicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
-  <polygon class="cls-1" points="202.5 63.83 176.5 37.83 120.16 94.16 63.83 37.83 37.83 63.83 94.16 120.16 37.83 176.5 63.83 202.5 120.16 146.16 176.5 202.5 202.5 176.5 146.16 120.16 202.5 63.83"/></svg></a></div>
+      <p>PORTFOLIO</p>
+      <div class="backbutton"><a href="#back">
+        <svg id="closeicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+          <polygon class="cls-1" fill="#EFEFEE" points="202.5 63.83 176.5 37.83 120.16 94.16 63.83 37.83 37.83 63.83 94.16 120.16 37.83 176.5 63.83 202.5 120.16 146.16 176.5 202.5 202.5 176.5 146.16 120.16 202.5 63.83"/>
+        </svg>
+        </a></div>
     </div>
-    <div class="portpage" id="page_electron"><img src='img/electron3.gif'style='width: 100%'>
-    <p>Classic probability-density solutions to the wave equation for the hydrogen atom, plotted and animated using <a href="https://docs.enthought.com/mayavi/mayavi/">Mayavi</a>.</p>
-    <p>While brushing up on 3D scipy visualizations, I played around with plotting quantum atoms. Inspired by my fascination with the quantum world and its aesthetics, I've taken to plotting both classic solutions and more complex approximations from electron field theory by way of computational chemistry.</p>
-    <p></p>
-    <p>The goal of this work is to produce an educational flick about water with as much physically accurate information about quantum water as possible. The animation will hopefully feature depictions of the <a href="http://www1.lsbu.ac.uk/water/grotthuss.html">Grotthuss mechanism</a> and electron localizations in <a href="http://www1.lsbu.ac.uk/water/h4o2_orbitals.html">various hydrogen bonding configurations.</a></p>
-    <img src='img/electron1.gif' class='fade-in'style='width: 33%'><img src='img/electron2.gif' class='fade-in'style='width: 33%'><img src='img/electron3.gif'class='fade-in'style='width: 33%'>
+    <div class="portpage" id="page_electron">
+      <p>Classic probability-density solutions to the wave equation for the hydrogen atom, plotted and animated using <a href="https://docs.enthought.com/mayavi/mayavi/">Mayavi</a>.</p>
+      <p>While brushing up on 3D SciPy visualizations, I played around with plotting quantum atoms. Inspired by my fascination with the quantum world and its aesthetics, I've taken to plotting both classic solutions and more complex approximations from electron field theory by way of computational chemistry.</p>
+      <p></p>
+      <img src='img/electron.gif'>
+      <p>The goal of this work is to produce an educational flick about quantum water with as much physically accurate information as possible. The animation will hopefully feature depictions of cool stuff like the <a href="http://www1.lsbu.ac.uk/water/grotthuss.html">Grotthuss mechanism</a> and electron localizations in <a href="http://www1.lsbu.ac.uk/water/h4o2_orbitals.html">various hydrogen bonding configurations.</a></p>
+    </div>
+    <div class="portpage" id="page_electron">
+      <p>Classic probability-density solutions to the wave equation for the hydrogen atom, plotted and animated using <a href="https://docs.enthought.com/mayavi/mayavi/">Mayavi</a>.</p>
+      <p>While brushing up on 3D scipy visualizations, I played around with plotting quantum atoms. Inspired by my fascination with the quantum world and its aesthetics, I've taken to plotting both classic solutions and more complex approximations from electron field theory by way of computational chemistry.</p>
+      <p></p>
+      <img src='img/electron.gif'>
+      <p>The goal of this work is to produce an educational flick about water with as much physically accurate information about quantum water as possible. The animation will hopefully feature depictions of the <a href="http://www1.lsbu.ac.uk/water/grotthuss.html">Grotthuss mechanism</a> and electron localizations in <a href="http://www1.lsbu.ac.uk/water/h4o2_orbitals.html">various hydrogen bonding configurations.</a></p>
     </div>
     <div id="gallery">
-    
-    <div class="thumbnail"><div><a href="#" id="thumbnail_electron"><img src="img/bone.jpeg">
-    <div class="thumbnail_inner"></div><div class="thumbnail_caption">Animated visual models of classic single-electron atoms and water molecules w/ Mayavi</div></a></div></div>
-    
-    <div class="thumbnail"><div><a href="#" id="thumbnail_electron"><img src="img/follicle.jpeg">
-    <div class="thumbnail_inner"></div><div class="thumbnail_caption">Cute + robust physics engine from scratch in Python x OpenGL</div></div></a></div>
-    
-    <div class="thumbnail"><div><a href="#" id="thumbnail_electron"><img src="img/stomach.jpeg">
-    <div class="thumbnail_inner"></div><div class="thumbnail_caption">From scratch simulations towards a public art installation depicting abiogenesis</div></div></a></div>
-    
+      <div class="thumbnail">
+        <div><a href="#mayavi_hydrogen" id="thumbnail_electron"><img src="img/electron.gif">
+          <div class="thumbnail_inner"></div>
+          <div class="thumbnail_caption">Animated visual models of classic single-electron atoms and water molecules w/ Mayavi</div>
+          </a></div>
+      </div>
+      <div class="thumbnail">
+        <div><a href="#pygame_particles" id="thumbnail_electron"><img src="img/stomach.jpeg">
+          <div class="thumbnail_inner"></div>
+          <div class="thumbnail_caption">From-scratch 2D physics and genetic automata in PyGame</div>
+        </div>
+        </a></div>
     </div>
-    </div>
-  
-  
+  </div>
   <div id="contact">
-    <div class="backbutton"><a href="#back"><svg id="closeicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
-  <polygon class="cls-1" points="202.5 63.83 176.5 37.83 120.16 94.16 63.83 37.83 37.83 63.83 94.16 120.16 37.83 176.5 63.83 202.5 120.16 146.16 176.5 202.5 202.5 176.5 146.16 120.16 202.5 63.83"/></svg></a></div>
+    <div class="backbutton"><a href="#back">
+      <svg id="closeicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+        <polygon class="cls-1" points="202.5 63.83 176.5 37.83 120.16 94.16 63.83 37.83 37.83 63.83 94.16 120.16 37.83 176.5 63.83 202.5 120.16 146.16 176.5 202.5 202.5 176.5 146.16 120.16 202.5 63.83"/>
+      </svg>
+      </a></div>
     <div class="quarter"><a href="https://www.linkedin.com/in/stephen-tucker-ab8817128/"><img src="img/linkedin.svg"></a></div>
     <div class="quarter"><a href="https://twitter.com/thebuggerfactor"><img src="img/twitter.svg"></a></div>
     <div class="quarter"><a href="tel:3526651136"><img src="img/phone.svg"></a></div>
     <div class="quarter"><a href="mailto:sstucker@bu.edu"><img src="img/mail.svg"></a></div>
   </div>
-  
-  
   <div id="name">
     <p>STEPHEN TUCKER</p>
   </div>
   <div id="mainmenu">
-    <div class="menuitem"><a href="#" id="a1">ABOUT</a></div>
-    <div class="menuitem"><a href="#" id="a2">PORTFOLIO</a></div>
-    <div class="menuitem"><a href="#" id="a3">BLOG</a></div>
-    <div class="menuitem"><a href="#" id="a4">RESEARCH</a></div>
-    <div class="menuitem"><a href="#" id="a5">CONTACT</a></div>
+    <div class="menuitem"><a href="#about" id="a1">ABOUT</a></div>
+    <div class="menuitem"><a href="#portfolio" id="a2">PORTFOLIO</a></div>
+    <div class="menuitem"><a href="#blog" id="a3">BLOG</a></div>
+    <!-- <div class="menuitem"><a href="#research" id="a4">RESEARCH</a></div> -->
+    <div class="menuitem"><a href="#contact" id="a5">CONTACT</a></div>
   </div>
 </div>
 <div id="footer">
@@ -436,7 +446,7 @@ preload([
     'electron2.gif',
     'electron3.gif'
 ]);
-</script>
+</script> 
 <script>
 function closeWindow (e) {
 	$('#main').css({"width":"","height":"","background-color":""});
@@ -486,11 +496,12 @@ $(document).keyup(function(e) {
         closeWindow();
     }
 });
-</script>
+</script> 
 <script>
 $('#thumbnail_electron').click(function(){
 	$('.portpage').css("display","");
 	$('#page_electron').css("display","inline-block");
+	$('.portpage').scrollTop(); 
 	$('.portpage img').fadeTo(500,1);
 });
 $('.thumbnail').mouseenter(function(){
