@@ -353,6 +353,13 @@ html, body {
 	margin: 0 auto;
 	display: block;
 }
+#page_particles img {
+	width: 300px;
+	display: block;
+	margin: 0 auto;
+	outline:#000000;
+	outline-width:10px;
+}
 </style>
 <meta charset="utf-8">
 <title>Stephen Tucker</title>
@@ -395,6 +402,36 @@ html, body {
       <img src='img/electron.gif'>
       <p>The goal of this work is to produce an educational flick about water with as much physically accurate information about quantum water as possible. The animation will hopefully feature depictions of the <a href="http://www1.lsbu.ac.uk/water/grotthuss.html">Grotthuss mechanism</a> and electron localizations in <a href="http://www1.lsbu.ac.uk/water/h4o2_orbitals.html">various hydrogen bonding configurations.</a></p>
     </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="portpage" id="page_particles">
+      <p>In getting my start with <a href="https://www.pygame.org">Pygame</a>, I created a simple 2D physics engine from scratch, in which particles can resolve simple collisions with one another. The particles have mass and size, but also charge, which produces a pseudo-coulombic attraction between particles of opposite charge. There's also a bit of drag.</p>
+		<img src='img/pygame_2.gif'>
+		<p>I was interested in the crystal-like structures forming due to the coulombic forces I bestowed upon my particles, and introduced a bonding mechanism. In the universe shown below, the molecules form bonds upon contact and break the bonds if they're stretched too far.</p>
+		<img src='img/pygame_3.gif'>
+      <p>Confident I could turn my single particles into molecules, I set to bestowing some of my particles with life-life properties. It was easy to give one particle an unquenchable thirst for the others, and an energy level which it used to boost itself towards its nearest victim. Below, this energy level runs out when the cannibal particle goes hungry.</p>
+      <img src='img/pygame_4.gif'>
+      <p>After watching my dumb-but-hungry particle flit about the screen awhile, I started to imagine a universe full of organism-like particles, each with their own properties, competing, collaborating, reproducing, and evolving in the primordial soup. Ultimately, I want to set up a universe for my particles where they can die but also reproduce, generationally shuffling around values such as their resource flavor of choice, who or what they choose to bond with amd eat, how frugal they are about spending resources to move or divide, and all the geometric strategies they use to do so. I'm working on setting up a genetic universe that exhibits emergent complexity: the rules of the game will produce more complex forms than those of the initial conditions!</p>
+            <img src='img/pygame_5.gif'>
+      <p>Above, particles make the tough call whether to move or divide, and (rather poorly) pick whether to spend resources moving towards their nearest food source or the food most inline with their current heading. Their short-lived children have slightly different criteria for these decisions!</p>
+      <p>Eventually, I'll clean up my physics toolbox and start displaying my universe in a game engine, or perhaps Blender. You can check out the code <a href="https://github.com/sstucker/pygame_particles">here.</p<a></p>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div id="gallery">
       <div class="thumbnail">
         <div><a href="#mayavi_hydrogen" id="thumbnail_electron"><img src="img/electron.gif">
@@ -403,7 +440,7 @@ html, body {
           </a></div>
       </div>
       <div class="thumbnail">
-        <div><a href="#pygame_particles" id="thumbnail_electron"><img src="img/stomach.jpeg">
+        <div><a href="#pygame_particles" id="thumbnail_particles"><img src="img/pygame_5.gif">
           <div class="thumbnail_inner"></div>
           <div class="thumbnail_caption">From-scratch 2D physics and genetic automata in PyGame</div>
         </div>
@@ -504,6 +541,14 @@ $('#thumbnail_electron').click(function(){
 	$('.portpage').scrollTop(); 
 	$('.portpage img').fadeTo(500,1);
 });
+
+$('#thumbnail_particles').click(function(){
+	$('.portpage').css("display","");
+	$('#page_particles').css("display","inline-block");
+	$('.portpage').scrollTop(); 
+	$('.portpage img').fadeTo(500,1);
+});
+
 $('.thumbnail').mouseenter(function(){
 	$(this).find("img").css("opacity","0.1");
 	$(this).find("div").css("opacity","1.0");
