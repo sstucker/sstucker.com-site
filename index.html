@@ -308,7 +308,7 @@ html, body {
 #gallery {
 	position: relative;
 	top: 18vw;
-	width: 60%;
+	width: 80%;
 	margin: 0 auto;
 	overflow: auto;
 	opacity: 0;
@@ -316,9 +316,11 @@ html, body {
 }
 .thumbnail {
 	display: inline-block;
+	position: relative;
 	width: 200px;
 	height: 200px;
 	margin: 20px;
+	overflow: hidden;
 	background: lightgrey;
 }
 .thumbnail > div {
@@ -332,6 +334,8 @@ html, body {
 	width: 200px;
 	top: 0;
 	overflow: hidden;
+	opacity: 0.5;
+	background: black;
 }
 .thumbnail_inner {
 	position: absolute;
@@ -357,8 +361,9 @@ html, body {
 	width: 300px;
 	display: block;
 	margin: 0 auto;
-	outline:#000000;
+	outline: black;
 	outline-width:10px;
+	outline-offset:-1px;
 }
 </style>
 <meta charset="utf-8">
