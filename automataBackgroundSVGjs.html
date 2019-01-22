@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.3.6/svg.min.js"></script>
+
+<title>automataBackgroundSVG</title>
+</head>
+<style>
+</style>
+<body>
+<div id="automataSVG"></div>
+<script>
+const boardWidth = 40;
+const boardHeight = 20;
+const cellSize = 10;
+const lifeThresh = 2;
+const birthValue = 3;
+const deathThreshLow = 2;
+const deathThreshHigh = 3;
+var automataLUT = ["#000000","#FEFEFE"] //LUT for state colors
+function mod(n, m) {
+  //for our toroidal indexing we'll need a modulo function, not just js's remainder (%)
+  return ((n % m) + m) % m;
+}
+function sleep(ms) {
+  //thank you to stack overflow user dan dascalescu
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+function initBoard() {
+	window.automataBoard = [];
+  	for (var i=0;i<boardWidth;i++) {
+    	automataBoard[i]=new Array(boardHeight);
+  	};
+	window.automataSVG = SVG("automataSVG").size(boardWidth*cellSize,boardHeight*cellSize);
+	for (var i=0;i<boardWidth;i++) {
+		for (var j=0;j<boardHeight;j++) {
+			var cell = {
+				indexx : i,
+				indexy : j,
+				posx : i*cellSize,
+				posy : j*cellSize,
+				Z : 0,
+				S : 0,
+				SVGdraw : function(){
+					automataSVG.rect(cellSize,cellSize).move(this.posx,this.posy).animate(20,'<>',20).fill(automataLUT[this.Z]);
+				},
+			}
+			automataBoard[i][j] = cell;
+			automataBoard[i][j].SVGdraw();
+		}
+	}
+}
+function updateBoard(board) {
+  //conway's game of life indexing and algo calculates new board. called on board
+  getMouseCell();
+  for (var i=0;i<boardWidth;i++) {
+    for (var j=0;j<boardHeight;j++) {
+	  var currentCell = board[i][j];
+      var Z = currentCell.Z;
+      var S = 0;
+      //toroidal indexing
+      S += board[mod((i+1),boardWidth)][mod((j+1),boardHeight)].Z;
+      S += board[mod((i+1),boardWidth)][mod(j,boardHeight)].Z;
+      S += board[mod((i+1),boardWidth)][mod((j-1),boardHeight)].Z;
+      S += board[mod(i,boardWidth)][mod((j+1),boardHeight)].Z;
+      S += board[mod(i,boardWidth)][mod((j-1),boardHeight)].Z;
+      S += board[mod((i-1),boardWidth)][mod((j+1),boardHeight)].Z;
+      S += board[mod((i-1),boardWidth)][mod(j,boardHeight)].Z;
+      S += board[mod((i-1),boardWidth)][mod((j-1),boardHeight)].Z;
+      //implementation of 2-state conway algo. (cell obj supports more states!)
+      if (Z == 1) {
+        if ((S < deathThreshLow) || (S > deathThreshHigh)) {
+		   currentCell.Z = 0;
+		   currentCell.SVGdraw();
+		};
+      };
+      if (Z == 0) {
+        if (S == birthValue) {
+		  currentCell.Z = 1;
+		  currentCell.SVGdraw();
+        };
+      };
+    };
+  };
+  return board;
+};
+function getMouseCell(board){
+	document.addEventListener("mousemove",onMousemove);
+	var mouseMoved = false;
+	setTimeout(function() {
+		if (!mouseMoved){
+			console.log("mouse not moved");
+			console.log(mousei,mousej)
+			board[mousei][mousej].Z = 1;
+			board[mousei][mousej].SVGdraw()
+			document.removeEventListener("mousemove",onMousemove)
+			}
+		},5,);
+	function onMousemove(event){
+		console.log("mouse moved!");
+		mouseMoved = true;
+		mousei = Math.round(event.pageX/cellSize)-1;
+		mousej = Math.round(event.pageY/cellSize)-1;
+		console.log(mousei,mousej)
+		board[mousei][mousej].Z = 1;
+		board[mousei][mousej].SVGdraw();
+		console.log(board[mousei][mousej].Z);
+		document.removeEventListener("mousemove",onMousemove);
+	}
+}
+initBoard();
+automataBoard[5][5].Z = 1;
+automataBoard[6][5].Z = 1;
+automataBoard[7][5].Z = 1;
+automataBoard[7][4].Z = 1;
+automataBoard[6][3].Z = 1;
+
+var mousei = undefined;
+var mousej = undefined;
+function runBoard(){
+	automataBoard = updateBoard(automataBoard);
+	getMouseCell(automataBoard);
+}
+setInterval(runBoard,20);
+
+console.log("Done!")
+</script>
+</body>
+</html>
