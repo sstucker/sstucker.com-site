@@ -8,18 +8,40 @@
 <title>automataBackgroundSVG</title>
 </head>
 <style>
+#bg {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover !important;
+}
+#automataSVG {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
 </style>
 <body>
-<div id="automataSVG"></div>
+<div id="bg"><div id="automataSVG"></div></div>
 <script>
-const boardWidth = 40;
-const boardHeight = 20;
-const cellSize = 10;
-const lifeThresh = 2;
+var screenWidth = parseInt($("#bg").css("width"));
+var screenHeight = parseInt($("#bg").css("height"));
+console.log(screenWidth,screenHeight);
+const cellSize = 50;
+var boardWidth = Math.round(screenWidth/cellSize);
+var boardHeight = Math.round(screenHeight/cellSize);
+console.log(boardWidth,boardHeight);
 const birthValue = 3;
 const deathThreshLow = 2;
 const deathThreshHigh = 3;
-var automataLUT = ["#000000","#FEFEFE"] //LUT for state colors
+const refreshRate = 50;
+var automataLUT = ["#FFFFFF","#000000"] //LUT for state colors
 function mod(n, m) {
   //for our toroidal indexing we'll need a modulo function, not just js's remainder (%)
   return ((n % m) + m) % m;
@@ -44,7 +66,7 @@ function initBoard() {
 				Z : 0,
 				S : 0,
 				SVGdraw : function(){
-					automataSVG.rect(cellSize,cellSize).move(this.posx,this.posy).animate(20,'<>',20).fill(automataLUT[this.Z]);
+					automataSVG.rect(cellSize,cellSize).move(this.posx,this.posy).animate(2*refreshRate,'<>',3*refreshRate).fill(automataLUT[this.Z]).stroke("none");
 				},
 			}
 			automataBoard[i][j] = cell;
@@ -54,7 +76,7 @@ function initBoard() {
 }
 function updateBoard(board) {
   //conway's game of life indexing and algo calculates new board. called on board
-  getMouseCell();
+  getMouseCell(board);
   for (var i=0;i<boardWidth;i++) {
     for (var j=0;j<boardHeight;j++) {
 	  var currentCell = board[i][j];
@@ -91,28 +113,27 @@ function getMouseCell(board){
 	var mouseMoved = false;
 	setTimeout(function() {
 		if (!mouseMoved){
-			console.log("mouse not moved");
-			console.log(mousei,mousej)
-			board[mousei][mousej].Z = 1;
-			board[mousei][mousej].SVGdraw()
-			document.removeEventListener("mousemove",onMousemove)
+			try {
+				board[mousei][mousej].Z = 1;
+				board[mousei][mousej].SVGdraw()
+			} catch(err) {
+				console.log("No mouse coords yet")};
+			document.removeEventListener("mousemove",onMousemove);
 			}
-		},5,);
+		},refreshRate/2,);
 	function onMousemove(event){
-		console.log("mouse moved!");
 		mouseMoved = true;
 		mousei = Math.round(event.pageX/cellSize)-1;
 		mousej = Math.round(event.pageY/cellSize)-1;
-		console.log(mousei,mousej)
 		board[mousei][mousej].Z = 1;
 		board[mousei][mousej].SVGdraw();
-		console.log(board[mousei][mousej].Z);
 		document.removeEventListener("mousemove",onMousemove);
 	}
 }
 initBoard();
 automataBoard[5][5].Z = 1;
 automataBoard[6][5].Z = 1;
+automataBoard[7][5].Z = 1;
 automataBoard[7][5].Z = 1;
 automataBoard[7][4].Z = 1;
 automataBoard[6][3].Z = 1;
@@ -121,11 +142,9 @@ var mousei = undefined;
 var mousej = undefined;
 function runBoard(){
 	automataBoard = updateBoard(automataBoard);
-	getMouseCell(automataBoard);
 }
-setInterval(runBoard,20);
-
-console.log("Done!")
+console.log("automata widget loaded!")
+setInterval(runBoard,refreshRate);
 </script>
 </body>
 </html>
