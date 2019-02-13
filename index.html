@@ -292,7 +292,7 @@ html, body {
 	margin-left: 20%;
 	margin-right: 20%;
 	width: 60%;
-	height: 600px;
+
 	background-color: none;
 	top: 10vw;
 }
@@ -332,6 +332,7 @@ html, body {
 }
 .thumbnail img {
 	width: 200px;
+	height: 200px;
 	top: 0;
 	overflow: hidden;
 	opacity: 1;
@@ -352,9 +353,9 @@ html, body {
 	opacity: 0;
 	text-align: left;
 }
-#page_electron img {
-	width: 50%;
-	margin: 0 auto;
+#page_BE517 img {
+	width: 100%;
+	margin: auto;
 	display: block;
 }
 #page_particles img {
@@ -377,8 +378,8 @@ html, body {
       </svg>
       </a></div>
     <p>Hi! I'm Stephen.</p>
-    <p>I'm a 20 year-old student, scientist, designer, and tinkerer studying biomedical engineering at Boston University. I love Python, science communication, computer-aided art and design, synthetic biology, and biomedical imaging.</p>
-    <p>Right now, I'm working on visually engaging models of quantum atoms and a series of artistic genetic simulations that will soon depict molecular abiogenesis.</p>
+    <p>I'm a 20 year-old student, scientist, designer, and tinkerer studying biomedical and computer engineering at Boston University. I love Python, science communication, computer-aided art and design, synthetic biology, and biomedical imaging.</p>
+	  <p>Right now, I'm working on microscope control software in the <a href="http://sites.bu.edu/boas/">BOAS Lab</a> and a series of genetic simulations that depict molecular abiogenesis.</p>
     <p>You can get in touch with me on <a href="https://twitter.com/thebuggerfactor">Twitter</a> or <a href="https://www.linkedin.com/in/stephen-tucker-ab8817128/">Linkedin</a>. Please <a href="mailto:sstucker@bu.edu">email</a> me with any inquiries, or for a resume!</p>
     <p>Thanks for visiting my (very much unfinished!) website. You can check out the source on my <a href="https://github.com/sstucker">GitHub.</a></p>
   </div>
@@ -391,20 +392,21 @@ html, body {
         </svg>
         </a></div>
     </div>
-    <div class="portpage" id="page_electron">
-      <p>Classic probability-density solutions to the wave equation for the hydrogen atom, plotted and animated using <a href="https://docs.enthought.com/mayavi/mayavi/">Mayavi</a>.</p>
-      <p>While brushing up on 3D SciPy visualizations, I played around with plotting quantum atoms. Inspired by my fascination with the quantum world and its aesthetics, I've taken to plotting both classic solutions and more complex approximations from electron field theory by way of computational chemistry.</p>
-      <p></p>
-      <img src='img/electron.gif'>
-      <p>The goal of this work is to produce an educational flick about quantum water with as much physically accurate information as possible. The animation will hopefully feature depictions of cool stuff like the <a href="http://www1.lsbu.ac.uk/water/grotthuss.html">Grotthuss mechanism</a> and electron localizations in <a href="http://www1.lsbu.ac.uk/water/h4o2_orbitals.html">various hydrogen bonding configurations.</a></p>
-    </div>
-    <div class="portpage" id="page_electron">
-      <p>Classic probability-density solutions to the wave equation for the hydrogen atom, plotted and animated using <a href="https://docs.enthought.com/mayavi/mayavi/">Mayavi</a>.</p>
-      <p>While brushing up on 3D scipy visualizations, I played around with plotting quantum atoms. Inspired by my fascination with the quantum world and its aesthetics, I've taken to plotting both classic solutions and more complex approximations from electron field theory by way of computational chemistry.</p>
-      <p></p>
-      <img src='img/electron.gif'>
-      <p>The goal of this work is to produce an educational flick about water with as much physically accurate information about quantum water as possible. The animation will hopefully feature depictions of the <a href="http://www1.lsbu.ac.uk/water/grotthuss.html">Grotthuss mechanism</a> and electron localizations in <a href="http://www1.lsbu.ac.uk/water/h4o2_orbitals.html">various hydrogen bonding configurations.</a></p>
-    </div>
+
+    <div class="portpage" id="page_BE517">
+      <p>Presented here are lab reports I prepared weekly for a course called <em>Optical Microscopy of Biological Materials,</em> taught by Anderson Chen of the <a href="http://sites.bu.edu/boas/">BOAS Lab</a> at Boston University. They cover the principles and applications of important microscopy techniques and demonstrate my ability to communicate the results of my work.</p>
+      <p>The open-ended nature of these assignments taught me a lot about how and when to apply the many analytical tools in my repetoire; this meant making judgements about when to use Fourier analysis, regression, curve-fitting, or maybe just a picture. </p>
+      <p>SciPy, MATLAB, and ImageJ were frequently used to analyze and present data.</p>
+        <div class="slick-carousel">
+    <div><img src="img/microscope_labs_Page_01.png"></div>
+    <div><img src="img/microscope_labs_Page_02.png"></div>
+    <div><img src="img/microscope_labs_Page_03.png"></div>
+	<div><img src="img/microscope_labs_Page_09.png"></div>
+    <div><img src="img/microscope_labs_Page_10.png"></div>
+    <div><img src="img/microscope_labs_Page_11.png"></div>
+	<div><img src="img/microscope_labs_Page_12.png"></div>
+  </div>
+      </div>
     
     
     
@@ -418,14 +420,14 @@ html, body {
       <img src='img/pygame_2.gif'>
 	  <p>I was interested in the crystal-like structures forming due to the coulombic forces I bestowed upon my particles, so I went a step further and introduced a bonding mechanism. In the universe shown below, the particles form bonds with one another upon contact and break their bonds if they're stretched too far apart.</p>
 		<img src='img/pygame_3.gif'>
-	  <p>I then set my sights on giving my particles more interesting, life-life properties. I gave one particle an unquenchable thirst for the others, and an energy level which it used to boost itself towards its nearest victim. Below, this energy level runs out when the cannibal particle goes hungry.</p>
+	  <p>I then set my sights on giving my particles more interesting, life-like properties. I gave one particle an unquenchable thirst for the others, and an energy level which it used to boost itself towards its nearest victim. In the GIF below, this energy level runs out when the cannibal particle goes hungry.</p>
 		<img src='img/pygame_4.gif'>
-	  <p>After watching my dumb-but-hungry particle flit about the screen awhile, I started to imagine a universe full of organism-like particles, each with their own properties; competing, collaborating, reproducing, and evolving in the primordial soup.</p>
+	  <p>I started to imagine a universe full of organism-like particles, each with their own properties; competing, collaborating, reproducing, and evolving in the primordial soup.</p>
 	  <p>Ultimately, I want to set up a universe for my particles where they can die and/or reproduce, generationally shuffling around values. Their genomes will contain properties such as favorite flavor of resource; who or what they choose to bond with or eat; how frugal they are about spending their resources to move or divide, and the geometric strategies they use to do these things.</p>
 	  <p>I'm working on setting up a genetic universe that exhibits emergent complexity: the rules of the game will produce more complex automata than those present initially!</p>
 	  <img src='img/pygame_5.gif'>
       <p>Above, particles make the tough call whether to move or divide, and (rather poorly) pick whether to spend resources moving towards their nearest food source or the food most inline with their current heading. Their short-lived children have slightly different criteria for these decisions!</p>
-      <p>Eventually, I'll clean up my physics toolbox and start displaying my universe in a game engine, or maybe Blender. You can check out the code I've written so far <a href="https://github.com/sstucker/pygame_particles">here.</p<a></p>
+      <p>I'm working on porting my universe over to Unity, and thinking about how to make the finished product an interactive art installation. In the meantime, you can check out the scripts I've written so far <a href="https://github.com/sstucker/pygame_particles">here.</p<a></p>
     </div>
     
     
@@ -439,15 +441,21 @@ html, body {
     
     <div id="gallery">
       <div class="thumbnail">
-        <div><a href="#mayavi_hydrogen" id="thumbnail_electron"><img src="img/electron.gif">
+        <div><a href="#517_reports" id="thumbnail_reports"><img src="img/2photon_mousevasculature_volumetric.gif" alt=""/>
           <div class="thumbnail_inner"></div>
-          <div class="thumbnail_caption">Animated models of quantum atoms and water molecules w/ Mayavi</div>
+          <div class="thumbnail_caption">biological microscopy class lab reports</div>
           </a></div>
       </div>
       <div class="thumbnail">
         <div><a href="#pygame_particles" id="thumbnail_particles"><img src="img/pygame_thumb.gif">
           <div class="thumbnail_inner"></div>
-          <div class="thumbnail_caption">From-scratch 2D physics and genetic automata w/ PyGame</div>
+          <div class="thumbnail_caption">from-scratch 2D physics and genetic automata w/ PyGame</div>
+        </div>
+        </a></div>
+      <div class="thumbnail">
+        <div><a href="automataTest" id="thumbnail_automata"><img src="img/automata.gif">
+          <div class="thumbnail_inner"></div>
+          <div class="thumbnail_caption">.svg automata implementation</div>
         </div>
         </a></div>
     </div>
@@ -469,14 +477,21 @@ html, body {
   <div id="mainmenu">
     <div class="menuitem"><a href="#about" id="a1">ABOUT</a></div>
     <div class="menuitem"><a href="#portfolio" id="a2">PORTFOLIO</a></div>
-    <div class="menuitem"><a href="#blog" id="a3">BLOG</a></div>
+    <!-- <div class="menuitem"><a href="#blog" id="a3">BLOG</a></div> -->
     <!-- <div class="menuitem"><a href="#research" id="a4">RESEARCH</a></div> -->
-    <div class="menuitem"><a href="#contact" id="a5">CONTACT</a></div>
+    <div class="menuitem"><a href="#contact">CONTACT</a></div>
   </div>
 </div>
 <div id="footer">
   <p>©2018 - STEPHEN TUCKER</p>
 </div>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.slick-carousel').slick({
+        setting-name: setting-value
+      });
+    });
+  </script>
 <script>
 function preload(arrayOfImages) {
     $(arrayOfImages).each(function(){
@@ -484,9 +499,8 @@ function preload(arrayOfImages) {
     });
 }
 preload([
-    'electron1.gif',
-    'electron2.gif',
-    'electron3.gif'
+    '2photon_mousevasculature_volumetric.gif',
+    'follicle.jpeg'
 ]);
 </script> 
 <script>
@@ -540,9 +554,9 @@ $(document).keyup(function(e) {
 });
 </script> 
 <script>
-$('#thumbnail_electron').click(function(){
+$('#thumbnail_reports').click(function(){
 	$('.portpage').css("display","");
-	$('#page_electron').css("display","inline-block");
+	$('#page_BE517').css("display","inline-block");
 	$('.portpage').scrollTop(); 
 	$('.portpage img').fadeTo(500,1);
 });
