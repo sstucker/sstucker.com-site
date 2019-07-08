@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,900|Roboto:300,400,700&display=swap" rel="stylesheet">
+<link rel="icon" href="img/icon.png">
+<title>portfolio</title>
+<style>
+	
+	h1 {
+		font-family: 'Work Sans', sans-serif;
+		font-weight: 300;
+		font-size: 22pt;
+	}
+	
+	h2 {
+		font-family: 'Work Sans', sans-serif;
+		font-weight: 200;
+		font-size: 34pt;
+	}
+	
+	p {
+		font-family: 'Roboto', sans-serif;
+		font-size: 14pt;
+	}
+	
+	#header {
+		left: 0;
+		position: fixed;
+		width: 60%;
+		clear: both;
+		margin-top: 20px;
+	}
+	
+	#footer {
+		margin: 0 auto;
+		width: 60%;
+		clear: both;
+		text-align: center;
+	}
+	
+	#footer p {
+		padding: 50px 0 10px 0;
+		font-size: 14pt;
+		font-weight: 400;
+	}
+	
+	#footer img {
+		margin: 10px;
+		width: 50px;
+		background: black;
+	}
+	
+	#footer img:hover {
+		background: url('img/histgif80.gif');
+	}
+	
+	#links {
+		display: block;
+		margin: 0 auto;
+		width: 100%;
+		padding: 100px 0 10px 0;
+	}
+	
+	.content {
+		margin: 0 auto;
+		width: 60%;
+		clear: both;
+		padding: 50px 0 50px 0;
+	}
+	
+	.content-img {
+		width: 110vw;
+	}
+	
+	@media only screen and (max-width: 900px) {
+		#content {
+			width: 80%;
+		}
+		#header {
+			width: 80%;
+		}
+		#footer {
+			width: 80%;
+		}
+	}
+	
+	#home img {
+		width: 100px;
+		background: black;
+	}
+	
+	#home img:hover {
+		background: url('img/histgif400.gif');
+	}
+	
+	#menu {
+		margin: 0 auto;
+		width: 80%;
+		clear: both;
+		text-align: center;
+		padding: 100px 0 50px 0;
+	}
+	
+	.menu-item {
+		display: inline-block;
+		position: relative;
+		height: 200px;
+		width: 200px;
+		margin: 10px;
+		overflow: hidden;
+		background: white;
+	}
+	
+	.menu-thumbnail > img {
+		height: 200px;
+		width: 200px;
+	}
+	
+	.menu-description, .menu-thumbnail {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		text-align: left;
+	}
+	
+	.menu-description {
+		visibility: visible;
+	}
+	
+	.menu-description > h1, .menu-description > p {
+		text-decoration: none;
+		color: #000000;
+		opacity: 0;
+		padding: 0 10px 0 10px;
+	}
+	
+	.menu-item:hover p, .menu-item:hover h1 {
+		opacity: 1;
+	}
+	
+	.menu-item:hover img {
+		opacity: 0.2;
+	}
+	
+</style>
+</head>
+<body>
+	<div id='header'>
+		<a id='home' href='index.html'><img src='img/white-corner.png'></a>	
+	</div>
+	<div class='content'>
+		<h2>Tape-spring prosthetic elbow</h2>
+		<p>Description text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+	<img class='content-img' src='img/elbow-render1.JPG'>
+	<div class='content'>
+		<p>Description text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+	<img class='content-img' src='img/elbow-rotation.gif'>
+	</div> <!--- content --->
+	<div id='menu'>
+		<a class='menu-item' href='#1'>
+			<div class='menu-thumbnail'>
+				<img src='img/elbow-thumbnail.gif'>
+			</div>
+			<div class='menu-description'>
+				<h1>Tape-spring prosthetic elbow</h1>
+				<p>CAD, mechanical engineering</p>
+			</div>
+		</a>
+		<a class='menu-item' href='#2'>
+			<div class='menu-thumbnail'>
+				<img src=''>
+			</div>
+			<div class='menu-description'>
+				<h1>Bubble</h1>
+				<p>Android, mobile development, brand design</p>
+			</div>
+		</a>
+		<a class='menu-item' href='#3'>
+			<div class='menu-thumbnail'>
+				<img src=''>
+			</div>
+			<div class='menu-description'>
+				<h1>Microscopy software</h1>
+				<p>Python, Qt, instrumentation, biomedical imaging</p>	
+			</div>
+		</a>
+	</div> <!--- menu --->
+
+	<div id='footer'>
+		<div id='links'>
+			<a href='https://www.linkedin.com/in/stephen-tucker-ab8817128'><img src='img/linkedin.svg'></a>
+			<a href='https://www.github.com/sstucker'><img src='img/github.svg'></a>
+			<a href='https://www.instagram.com/xtxve'><img src='img/instagram.svg'></a>
+		</div>
+		<p>STEPHEN TUCKER © 2019</p>
+	</div> <!--- footer --->
+</body>
+</html>
