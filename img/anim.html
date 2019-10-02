@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<title>canvas_test</title>
+	<style type="text/css">
+	html, body {
+		margin: 0;
+	}
+	body {
+		overflow: hidden;
+		background-color: #0000FE;
+		height: inherit;
+	}
+	canvas {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		z-index: -10;
+	}
+	p {
+		font-family: sans-serif;
+		font-weight: lighter;
+		font-size: 40px;
+		margin-left: 20vw;
+		margin-top: 10vh;
+	}
+</style>
+</head>
+<body>
+
+	<canvas></canvas>
+	<p>Under construction :)</p>
+
+
+
+<script type="text/javascript">
+
+	function bezier2(start,stop,control,t) {
+		return Math.pow((1-t),2)*start + 2*(1-t)*t*control + Math.pow(t,2)*stop;
+	}
+
+	function distance(x1,y1,x2,y2) {
+		return Math.sqrt( Math.pow(x1-x2, 2) + Math.pow(y1-y2, 2) );
+	}
+
+	function randsgn() {
+		c = [-1,1];
+		return c[Math.round(Math.random())];
+	}
+
+	var canvas = document.querySelector('canvas');
+	var ctx = canvas.getContext('2d');
+	ctx.imageSmoothingEnabled = true;
+
+	var width = canvas.width = window.innerWidth;
+	var height = canvas.height = window.innerHeight;
+
+	var t = 0;
+
+	class DoubleStrand {
+
+		constructor(x, y, length, size, thickness) {
+
+			this.theta = [];
+			this.bond = [];
+			this.x = [];
+			this.y = [];
+			this.size = size;
+			this.thickness = thickness;
+
+			this.theta_freq = 1/100;
+			this.phi_freq = 0;
+			this.theta_phase = 0;
+			this.phi_phase = 0;
+
+			for (var i = 0; i < length; i++) {
+				this.theta.push(Math.PI/4);
+				this.bond.push(thickness)
+				this.x.push(x + Math.pow(i,1.1)*size);
+				this.y.push(y);
+			}
+		}
+
+		move() {
+			for (var i = 0; i < this.x.length; i++) {
+
+				this.theta[i] = (t*this.theta_freq+i*this.theta_phase) % 2*Math.PI;
+				this.bond[i] = ( (t*this.phi_freq+i*this.phi_phase) % 2*Math.PI ) * this.thickness;
+
+			}
+		}
+
+		draw() {
+
+			// Draw first strand
+			var px = [this.x[0]];
+			var py = [this.y[0]];
+			ctx.beginPath();
+			ctx.moveTo(this.x[0], this.y[0]);
+			for (var i = 1; i < this.x.length-2; i++ ) {
+				var xc = (this.x[i] + this.x[i+1]) / 2;
+				var yc = (this.y[i] + this.y[i+1]) / 2;
+				ctx.quadraticCurveTo(this.x[i], this.y[i], xc, yc);
+				px.push(xc);
+				py.push(yc);
+			}
+			ctx.quadraticCurveTo(this.x[i], this.y[i], this.x[i+1], this.y[i+1]);
+			ctx.strokeStyle = 'white';
+			ctx.stroke();
+
+			px.push(this.x[i+1]);
+			py.push(this.y[i+1]);
+
+			var px2 = [];
+			var py2 = [];
+
+			for (i = 0; i < px.length; i++) {
+
+				var ox = this.bond[i]*Math.cos(this.theta[i]);
+				var oy = this.bond[i]*Math.sin(this.theta[i]);
+
+				var x2 = px[i]+ox;
+				var y2 = py[i]+oy;
+
+				px2.push(x2);
+				py2.push(y2);
+
+			}
+
+			// Draw second strand
+			ctx.beginPath();
+			ctx.moveTo(px2[0], py2[0]);
+			for (var i = 1; i < px2.length-2; i++ ) {
+				var xc = (px2[i] + px2[i+1]) / 2;
+				var yc = (py2[i] + py2[i+1]) / 2;
+				ctx.quadraticCurveTo(px2[i], py2[i], xc, yc);
+				px.push(xc);
+				py.push(yc);
+			}
+			ctx.quadraticCurveTo(px2[i], py2[i], px2[i+1], py2[i+1]);
+			ctx.strokeStyle = 'white';
+			ctx.stroke();
+
+			for (i = 1; i < px.length - 2; i += 3) {
+
+				ctx.beginPath();
+				ctx.moveTo(px[i],py[i]);
+				ctx.lineTo(px2[i],py2[i]);
+				ctx.lineTo(px2[i+1],py2[i+1]);
+				ctx.lineTo(px[i+1],py[i+1]);
+				ctx.fillStyle = 'white';
+				ctx.fill();
+
+			}
+
+		} // end of draw method
+
+	}
+
+	var strand = new DoubleStrand(width/10,height/3,80,8,20);
+
+	function anim() {
+		t += 1;
+		ctx.clearRect(0, 0, width, height);
+		strand.move();
+		strand.draw();
+		requestAnimationFrame(anim);
+	}
+	anim();
+
+
+
+
+</script>
+</body>
