@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/js/dct.js"></script>
+    <link rel="stylesheet" type="text/css" href="dct_style.css">
+</head>
+
+<body>
+    <div id="bg">
+        <div id="panel_left">
+            <div id=circle_of_fifths>
+                <ul class="circle" id="maj_circle">
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>C</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>G</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>D</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>A</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>E</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>B</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>G♭/F♯</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>D♭/C♯</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>A♭</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>E♭</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>B♭</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>F</p>
+                            </div>
+                        </a></li>
+                </ul>
+                <ul class="circle" id="min_circle">
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>a</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>e</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>b</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>f♯</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>c♯</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>g♯</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>eb/d♯</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>b♭/a♯</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>f</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>c</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>g</p>
+                            </div>
+                        </a></li>
+                    <li><a class="fifth" href="#">
+                            <div class="text">
+                                <p>d</p>
+                            </div>
+                        </a></li>
+                </ul>
+                <div class="circle" id="center"></div>
+            </div>
+        </div>
+        <div id="panel_right">
+            <p></p>
+            <p></p>
+            <div id="menu">
+                <!-- <label class="container"><p>7s</p>
+                <input type="checkbox" id="sevens_checkbox">
+                <span class="checkmark"></span>
+            </label> -->
+                <label class="container">
+                    <p>Scale anarchy</p>
+                    <input type="checkbox" id="multiple_checkbox">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">
+                    <p>Show chord name</p>
+                    <input type="checkbox" id="chord_checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">
+                    <p>Show degree</p>
+                    <input type="checkbox" id="degree_checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">
+                    <p>Show notes</p>
+                    <input type="checkbox" id="notes_checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">
+                    <p>Show keyboard</p>
+                    <input type="checkbox" id="piano_checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">
+                    <p>Metronome</p>
+                    <input type="checkbox" id="metronome_checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+                <div class="slidecontainer">
+                    <input type="range" min="20" max="140" value="40" class="slider" id="tempo_slider">
+                    <p id="tempo_view">Tempo (40 BPM)</p>
+                </div>
+                <p></p>
+                <a id="play-pause" href="#">
+                    <div id="play-button">
+                        <div class="arrow"></div>
+                        <div class="pause"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div id=panel_bottom>
+            <div id="clock">
+                <div class="tick"></div>
+                <div class="tick"></div>
+                <div class="tick"></div>
+                <div class="tick"></div>
+            </div>
+            <div id="cue-box">
+                <p id="chord-name" class="cue">Cmaj</p>
+                <p id="notes-list" class="cue">C, E, G</p>
+                <p id="degree" class="cue">I</p>
+            </div>
+            <div id="keyboard"><img src="img/piano/blank.svg"></div>
+            <div id="score"><img></div>
+        </div>
+    </div>
+    <audio id="metronome">
+        <source src="audio/Metronome.wav" type="audio/mpeg">
+    </audio>
+    <audio id="metronome_up">
+        <source src="audio/MetronomeUp.wav" type="audio/mpeg">
+    </audio>
+</body>
+
+</html>)
