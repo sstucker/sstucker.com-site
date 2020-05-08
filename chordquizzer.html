@@ -374,14 +374,17 @@ li a {
     display: table-cell;
     text-align: center;
     margin: 0 auto;
-    width: 70%;
+    width: 60%;
+    height: 160px;
+    background-color: #fafafa;
+    border-radius: 20px;
 }
 .tick {
     display: inline-block;
     width: 80px;
     height: 80px;
-    margin-top: 10px;
-    margin-left: 20px;
+    margin-top: 20px;
+    margin-right:16px;
     background-color:rgb(238, 238, 238);
     border: 20px solid rgb(238, 238, 238);    
     border-radius: 50%;
@@ -393,16 +396,29 @@ li a {
     display: table-cell;
     float: left;
     width: 30%;
-    height: 80px;
+    height:160px;
+    margin-left: 30px;
+    padding-top: 45px;
     vertical-align: middle;
+    
 }
-#cue {
+.cue {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 28pt;
-    color: #1F2041;
+    line-height: 12pt;
     opacity: 0;
     transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    white-space: nowrap;
+}
+#chord-name {
+    display: inline;
+    color: #000000;
+}
+#notes-list {
+    display: inline;
+    color: #4A4A4A;
+    margin-left: 20px;
 }
 
 </style>
@@ -446,16 +462,24 @@ li a {
     <p></p>
     <p></p>
     <div id="menu">
-        <label class="container"><p>7ths</p>
-            <input type="checkbox" id="sevenths_checkbox">
+        <!-- <label class="container"><p>7s</p>
+            <input type="checkbox" id="sevens_checkbox">
+            <span class="checkmark"></span>
+        </label> -->
+        <label class="container"><p>Multiple keys</p>
+            <input type="checkbox" id="multiple_checkbox">
             <span class="checkmark"></span>
         </label>
-        <label class="container"><p>Show notes</p>
-            <input type="checkbox" id="notes_checkbox" checked="checked">
+        <label class="container"><p>Show chord name</p>
+            <input type="checkbox" id="chord_checkbox" checked="checked">
             <span class="checkmark"></span>
         </label>
         <label class="container"><p>Show degree</p>
             <input type="checkbox" id="degree_checkbox" checked="checked">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container"><p>Show notes</p>
+            <input type="checkbox" id="notes_checkbox" checked="checked">
             <span class="checkmark"></span>
         </label>
         <label class="container"><p>Metronome</p>
@@ -482,7 +506,10 @@ li a {
         <div class="tick"></div>
         <div class="tick"></div>
     </div>
-    <div id="cue-box"><p id="cue">Chord here</p></div>
+    <div id="cue-box">
+        <p id="chord-name" class="cue">Cmaj</p><p id="notes-list" class="cue">C, E, G</p>
+        <p id="degree" class="cue">I</p>
+    </div>
 </div>
 </div>
 <audio id="metronome">
@@ -493,32 +520,82 @@ li a {
 </audio>
 <script>
 
-var major_degrees = ["I", "ii", "iii", "IV", "V", "vi", "vii"];
-var major_degrees = ["I", "ii", "iii", "IV", "V", "vi", "vii"];
+var major_colors = ["rgb(255,0,0)",
+                    "rgb(255,176,20)",
+                    "rgb(239, 230, 0)",
+                    "rgb(0,211,0)",
+                    "rgb(72,0,255)",
+                    "rgb(184,0,229)",
+                    "rgb(255,0,203)"];
+var major_degrees = ["I", "ii", "iii", "IV", "V", "vi", "vii°"];
+var minor_degrees = ["i", "ii°", "III", "iv", "v", "VI", "VII"];
 
-var active_keys = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  // Minor
-                   1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // Major
-
-var active_list = [12];  // C major is incl by default
+var active_keys = [12];
+var active_key = 12;
 
 var chordsLUT = [
-    ["Cmaj", "Dmin", "Emin", "Fmaj", "Gmaj", "Amin", "Bdim"],  // C
-    ["Gmaj", "Amin", "Bmin", "Cmaj", "Dmaj", "Emin", "F#dim"],  // G
-    ["Dmaj", "Emin", "F#min", "Gmaj", "Amaj", "Bmin", "C#dim"],  // D
-    ["Amaj", "Bmin", "C#min", "Dmaj", "Emaj", "F#min", "G#dim"],  // A
-    ["Emaj", "F#min", "G#min", "Amaj", "Bmaj", "C#min", "D#dim"],  // E
-    ["Bmaj", "C#min", "D#min", "Emaj", "F#maj", "G#min", "A#dim"],  // B
-    ["F#maj", "G#min", "A#min", "Bmaj", "C#maj", "D#min", "E#dim"],  // Gb
-    ["Dbmaj", "Ebmin", "Fmin", "Gbmaj", "Abmaj", "Bbmin", "Cdim"],  // Db
-    ["Abmaj", "Bbmin", "Cmin", "Dbmaj", "Ebmaj", "Fmin", "Gdim"],  // Ab
-    ["Ebmaj", "Fmin", "Gmin", "Abmaj", "Bbmaj", "Cmin", "Ddim"],  // Eb
-    ["Bbmaj", "Cmin", "Dmin", "Ebmaj", "Fmaj", "Gmin", "Adim"],  // Bb
-    ["Fmaj", "Gmin", "Amin", "Bbmaj", "Cmaj", "Dmin", "Edim"],  // F
+    ["Cmaj", "Dmin", "Emin", "Fmaj", "Gmaj", "Amin", "Bdim°"],  // C
+    ["Gmaj", "Amin", "Bmin", "Cmaj", "Dmaj", "Emin", "F♯dim°"],  // G
+    ["Dmaj", "Emin", "F♯min", "Gmaj", "Amaj", "Bmin", "C♯dim°"],  // D
+    ["Amaj", "Bmin", "C♯min", "Dmaj", "Emaj", "F♯min", "G♯dim°"],  // A
+    ["Emaj", "F♯min", "G♯min", "Amaj", "Bmaj", "C♯min", "D♯dim°"],  // E
+    ["Bmaj", "C♯min", "D♯min", "Emaj", "F♯maj", "G♯min", "A♯dim°"],  // B
+    ["F♯maj", "G♯min", "A♯min", "Bmaj", "C♯maj", "D♯min", "E♯dim°"],  // G♭
+    ["D♭maj", "E♭min", "Fmin", "G♭maj", "A♭maj", "B♭min", "Cdim°"],  // D♭
+    ["A♭maj", "B♭min", "Cmin", "D♭maj", "E♭maj", "Fmin", "Gdim°"],  // A♭
+    ["E♭maj", "Fmin", "Gmin", "A♭maj", "B♭maj", "Cmin", "Ddim°"],  // E♭
+    ["B♭maj", "Cmin", "Dmin", "E♭maj", "Fmaj", "Gmin", "Adim°"],  // B♭
+    ["Fmaj", "Gmin", "Amin", "B♭maj", "Cmaj", "Dmin", "Edim°"],  // F
 ];
+
+var notesLUT = {
+
+    "Cmaj": "C E G",
+    "C♯maj": "C♯ E♯ G♯",
+    "Dmaj": "D F♯ A",
+    "E♭maj": "E♭ G B♭",
+    "Emaj": "E G♯ B",
+    "Fmaj": "F A C",
+    "F♯maj": "F♯ A♯ C♯",
+    "Gmaj": "G B D",
+    "A♭maj": "A♭ C E♭",
+    "Amaj": "A C♯ E",
+    "B♭maj": "B♭ D F",
+    "Bmaj": "B D♯ F♯",
+
+    "Cmin": "C E♭ G",
+    "C♯min": "C♯ E G♯",
+    "Dmin": "D F A",
+    "E♭min": "E♭ G♭ B♭",
+    "Emin": "E G B",
+    "Fmin": "F A♭ C",
+    "F♯min": "F♯ A C♯",
+    "Gmin": "G B♭ D",
+    "A♭min": "A♭ B E♭",
+    "Amin": "A C E",
+    "B♭min": "B♭ D♭ F",
+    "Bmin": "B D F♯",
+
+    "Cdim°": "C E♭ G♭",
+    "C♯dim°": "C♯ E G",
+    "Ddim°": "D F A♭",
+    "E♭dim°": "E♭ G♭ A",
+    "Edim°": "E G B♭",
+    "Fdim°": "F A♭ B",
+    "F♯dim°": "F♯ A C",
+    "Gdim°": "G B♭ D♭",
+    "A♭dim°": "A♭ B D",
+    "Adim°": "A C E♭",
+    "B♭dim°": "B♭ D♭ E",
+    "Bdim°": "B D F",
+}
 
 var interval;
 
-var cue_text = $("#cue");
+var cue = $(".cue");
+var chord_name_text = $("#chord-name");
+var scale_degree_text = $("#degree")
+var notes_list_text = $("#notes-list");
 
 var toggle = $("#play-pause");
 var play_icon = $(".arrow");
@@ -536,7 +613,13 @@ var metronome_checkbox = $("#metronome_checkbox");
 var met1 = $('audio#metronome_up');
 var met2 = $('audio#metronome');
 
-var degree_checkbox = $("degree_checkbox");
+var multiple_checkbox = $("#multiple_checkbox");
+var chord_checkbox = $("#chord_checkbox")
+var degree_checkbox = $("#degree_checkbox");
+var notes_checkbox = $("#notes_checkbox");
+
+var maj_circle = $("#maj_circle");
+var min_circle = $("#min_circle");
 
 // Get period from tempo slider
 tempo_slider.oninput = function() {
@@ -544,49 +627,88 @@ tempo_slider.oninput = function() {
   period = 1/(tempo_slider.value * 1/60000)
 }
 
-var update_keys = function(key, scale, element) {
-    if (key) {  // Major
-        if (active_keys[key*12 + scale] == 1) {
-            element.find(".text").css("background-color","#CC3144");
-            active_keys[key*12 + scale] = 0;
+var apply_color_to_slice = function(i, selected) {
+    if (i < 12) {  // Minor
+        if (selected) {
+            min_circle.children().eq(i).find(".text").css("background-color","#1F2041");
         }
         else {
-            active_keys[key*12 + scale] = 1;
-            element.find(".text").css("background-color","#820F19");
+            min_circle.children().eq(i).find(".text").css("background-color","#A095BC");
         }
     }
-    else {  // Minor
-        if (active_keys[key*12 + scale] == 1) {
-            element.find(".text").css("background-color","#A095BC");
-            active_keys[key*12 + scale] = 0;
+    else {  // Major
+        if (selected) {
+            maj_circle.children().eq(i % 12).find(".text").css("background-color","#820F19");
         }
         else {
-            element.find(".text").css("background-color","#1F2041");
-            active_keys[key*12 + scale] = 1;
+            maj_circle.children().eq(i % 12).find(".text").css("background-color","#CC3144");
         }
     }
-    active_list = [];
-    for (i = 0; i < 24; i++)
-    {
-        if (active_keys[i] && !active_list.includes(i % 12))
-        {
-            active_list.push(i % 12);  // No minor scales rn
+}
+
+var clear_circles = function() {
+    for (i = 0; i < 12; i++) {
+        min_circle.children().eq(i).find(".text").css("background-color","#A095BC");
+    }
+    for (i = 11; i < 24; i++) {
+        maj_circle.children().eq(i % 12).find(".text").css("background-color","#CC3144");
+    }
+}
+
+var update_keys = function(key, scale) {
+    if (active_keys.includes(key*12 + scale)) {  // Deselect
+        active_keys = jQuery.grep(active_keys, function(value) {  // Remove clicked fron list
+            return value != key*12 + scale;
+        });
+        apply_color_to_slice(key*12 + scale, false);
+    }
+    else {  // Select new
+        if (multiple_checkbox.is(":checked")) {
+            active_keys.push(key*12 + scale);
+            apply_color_to_slice(key*12 + scale, true);
+        }
+        else {
+            active_keys = [key*12 + scale];
+            clear_circles();
+            apply_color_to_slice(key*12 + scale, true);
         }
     }
-    console.log(active_list);
+    console.log(active_keys);
 }
 
 var display_chord = function() {
-    if (active_list.length > 0) {
-        cue_text.css("opacity","0");
-        var rand_key = active_list[Math.floor(Math.random()*active_list.length)];
-        if (rand_key > 11)
-        {
-            rand_key = rand_key % 12;  // No minor scales
+    if (active_keys.length > 0) {
+        cue.css("opacity","0");
+        var rand_key = active_keys[Math.floor(Math.random()*active_keys.length)];
+        var rand_deg = Math.floor(Math.random()*7);
+        if (chord_checkbox.is(":checked")) {
+            var rand_chord = chordsLUT[rand_key % 12][rand_deg];
+            chord_name_text.text(rand_chord);
         }
-        var rand_chord = chordsLUT[rand_key][Math.floor(Math.random()*7)];
-        cue.innerHTML = rand_chord;
-        cue_text.css("opacity","1");
+        else {
+            chord_name_text.text("");
+        }
+        if (degree_checkbox.is(":checked")) {
+            if (rand_key > 11) {  // Major
+                scale_degree_text.text(major_degrees[rand_deg]);
+                scale_degree_text.css("color",major_colors[rand_deg])
+            }
+            else {  // Minor
+                scale_degree_text.text(minor_degrees[rand_deg]);
+                scale_degree_text.css("color",major_colors[(rand_deg + 2) % 7]);
+            }
+        }
+        else {
+            scale_degree_text.text("");
+        }
+        if (notes_checkbox.is(":checked")) {
+            notes_list_text.text(notesLUT[chordsLUT[rand_key % 12][rand_deg]]);
+        }
+        else {
+            notes_list_text.text("");
+        }
+
+        cue.css("opacity","1");
     }
     else {
         cue.innerHTML = "";
@@ -597,12 +719,12 @@ var advance = function(quiet) {
     if (playing)
     {
         if (beat == 0) {
-        clock.children().eq(3).css("background-color","rgb(238,238,238)");
+            clock.children().eq(3).css("background-color","rgb(238,238,238)");
         if (!quiet)
         {
             met1[0].play();
         }
-        display_chord();
+            display_chord();
         }
         else {
             clock.children().eq(beat - 1).css("background-color","rgb(238,238,238)");
@@ -618,12 +740,10 @@ var advance = function(quiet) {
         clock.children().eq(beat).css("background-color","#1F2041");
         beat += 1;
         setTimeout(function(){ // Recursively call advance function with period from slider
-            if (metronome_checkbox.is(":checked"))
-            {
+            if (metronome_checkbox.is(":checked")) {
                 advance(false);
             }
-            else
-            {
+            else {
                 advance(true);
             }
         }, period);
@@ -631,36 +751,36 @@ var advance = function(quiet) {
 }
 
 $(document).ready(function(){
+    multiple_checkbox.change(function() {
+        if ((!this.checked) && (active_keys.length > 0)) {
+            active_keys = [active_keys[active_keys.length - 1]]; // Truncate to last selected key
+        } 
+    });
     $('#min_circle li').click(function() {
-        update_keys(0, $(this).index(), $(this));
+        update_keys(0, $(this).index());
     });
     $('#maj_circle li').click(function() {
-        update_keys(1, $(this).index(), $(this));
+        update_keys(1, $(this).index());
     });
     toggle.click(function() { 
-        if (playing == true)  // Stop
-        {
+        if (playing == true) {  // Stop
             playing = false;
             play_icon.css("display","inline-block");
             pause_icon.css("display","none");
-            for (i = 0; i < 4; i++)
-            {
+            for (i = 0; i < 4; i++) {
                 clock.children().eq(i).css("background-color","rgb(238,238,238)");
             }
             beat = 0;
-            cue_text.css("opacity","0");
+            cue.css("opacity","0");
         }
-        else  // Start
-        {
+        else {  // Start
             playing = true;
             play_icon.css("display","none");
             pause_icon.css("display","inline-block");
-            if (metronome_checkbox.is(":checked"))
-            {
+            if (metronome_checkbox.is(":checked")) {
                 advance(false);
             }
-            else
-            {
+            else {
                 advance(true);
             }
         }
