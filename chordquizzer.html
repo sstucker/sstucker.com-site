@@ -1,0 +1,671 @@
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<style>
+#bg {
+    margin: 0 auto;
+    width: 70em;
+}
+
+#panel_right {
+    float: left;
+    width: 30%;
+    height: 70%;
+}
+#panel_left {
+    overflow: hidden;
+    float: left;
+    width: 70%;
+    height: 70%;
+}
+#panel_bottom {
+    float: left;
+    width: 100%;
+    height: 30%;
+}
+
+#circle_of_fifths {
+    margin: 0 auto;
+    height: 100%;
+    width: 80%;
+}
+
+.circle {
+	position: absolute;
+	padding: 0;
+    margin: 1em auto;
+	border-radius: 50%;
+	list-style: none;
+    overflow: hidden;
+}
+#maj_circle {
+	width: 32em;
+    height: 32em;
+}
+
+#min_circle {
+    width: 22em;
+    height: 22em;
+    transform: translate(5em, 5em);
+}
+#center {
+    background: #FFFFFF;
+    width: 10em;
+    height: 10em;
+    transform: translate(11em, 11em);
+}
+#min_circle .text {
+    background: #A095BC;
+}
+#min_circle .text:hover {
+    background: #877CA5 !important;
+}
+#maj_circle .text {
+    background: #CC3144;
+}
+#maj_circle .text:hover {
+    background: #B12736 !important;
+}
+#maj_circle li:first-child .text {  /* C major enabled by default */
+    background: #820F19;
+}
+li {
+	overflow: hidden;
+	position: absolute;
+	top: 0; right: 0;
+	width: 50%; height: 50%;
+    transform-origin: 0% 100%;    
+}
+
+.text {
+	position: absolute;
+	left: -100%;
+	width: 200%; height: 200%;
+	text-align: center;
+    -webkit-transform: skewY(60deg) rotate(15deg);
+    -ms-transform: skewY(60deg) rotate(15deg);
+    transform: skewY(60deg) rotate(15deg);
+    padding-top: 20px;
+
+}
+
+.text p {
+    display: block;
+    vertical-align: top;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 14pt;
+    color: #ffffff;
+}
+
+li:first-child {
+    -webkit-transform: rotate(0deg) skewY(-60deg);
+    -ms-transform: rotate(0deg) skewY(-60deg);
+	transform: rotate(0deg) skewY(-60deg);     
+}
+li:first-child p {
+    -webkit-transform: rotate(-15deg);
+    -ms-transform: rotate(-15deg);
+	transform: rotate(-15deg);    
+}
+
+li:nth-child(2) {
+    -webkit-transform: rotate(30deg) skewY(-60deg);
+    -ms-transform: rotate(30deg) skewY(-60deg);
+	transform: rotate(30deg) skewY(-60deg);     
+}
+li:nth-child(2) p {
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);    
+}
+
+li:nth-child(3) {
+    -webkit-transform: rotate(60deg) skewY(-60deg);
+    -ms-transform: rotate(60deg) skewY(-60deg);
+	transform: rotate(60deg) skewY(-60deg);    
+}
+li:nth-child(3) p {
+    -webkit-transform: rotate(-75deg);
+    -ms-transform: rotate(-75deg);
+	transform: rotate(-75deg);    
+}
+
+li:nth-child(4) {
+    -webkit-transform: rotate(90deg) skewY(-60deg);
+    -ms-transform: rotate(90deg) skewY(-60deg);
+	transform: rotate(90deg) skewY(-60deg);    
+}
+li:nth-child(4) p {
+    -webkit-transform: rotate(-105deg);
+    -ms-transform: rotate(-105deg);
+	transform: rotate(-105deg);    
+}
+
+li:nth-child(5) {
+    -webkit-transform: rotate(120deg) skewY(-60deg);
+    -ms-transform: rotate(120deg) skewY(-60deg);
+	transform: rotate(120deg) skewY(-60deg);    
+}
+li:nth-child(5) p {
+    -webkit-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+	transform: rotate(-135deg);    
+}
+
+li:nth-child(6) {
+    -webkit-transform: rotate(150deg) skewY(-60deg);
+    -ms-transform: rotate(150deg) skewY(-60deg);
+	transform: rotate(150deg) skewY(-60deg);    
+}
+li:nth-child(6) p {
+    -webkit-transform: rotate(-165deg);
+    -ms-transform: rotate(-165deg);
+	transform: rotate(-165deg);    
+}
+
+li:nth-child(7) {
+    -webkit-transform: rotate(180deg) skewY(-60deg);
+    -ms-transform: rotate(180deg) skewY(-60deg);
+	transform: rotate(180deg) skewY(-60deg);    
+}
+li:nth-child(7) p {
+    -webkit-transform: rotate(-195deg);
+    -ms-transform: rotate(-195deg);
+	transform: rotate(-195deg);    
+}
+
+li:nth-child(8) {
+    -webkit-transform: rotate(210deg) skewY(-60deg);
+    -ms-transform: rotate(210deg) skewY(-60deg);
+	transform: rotate(210deg) skewY(-60deg);    
+}
+li:nth-child(8) p {
+    -webkit-transform: rotate(-225deg);
+    -ms-transform: rotate(-225deg);
+	transform: rotate(-225deg);    
+}
+
+li:nth-child(9) {
+    -webkit-transform: rotate(240deg) skewY(-60deg);
+    -ms-transform: rotate(240deg) skewY(-60deg);
+	transform: rotate(240deg) skewY(-60deg);    
+}
+li:nth-child(9) p {
+    -webkit-transform: rotate(-255deg);
+    -ms-transform: rotate(-255deg);
+	transform: rotate(-255deg);    
+}
+
+li:nth-child(10) {
+    -webkit-transform: rotate(270deg) skewY(-60deg);
+    -ms-transform: rotate(270deg) skewY(-60deg);
+	transform: rotate(270deg) skewY(-60deg);    
+}
+li:nth-child(10) p {
+    -webkit-transform: rotate(-285deg);
+    -ms-transform: rotate(-285deg);
+	transform: rotate(-285deg);    
+}
+
+li:nth-child(11) {
+    -webkit-transform: rotate(300deg) skewY(-60deg);
+    -ms-transform: rotate(300deg) skewY(-60deg);
+	transform: rotate(300deg) skewY(-60deg);    
+}
+li:nth-child(11) p {
+    -webkit-transform: rotate(-315deg);
+    -ms-transform: rotate(-315deg);
+	transform: rotate(-315deg);    
+}
+
+li:nth-child(12) {
+    -webkit-transform: rotate(330deg) skewY(-60deg);
+    -ms-transform: rotate(330deg) skewY(-60deg);
+	transform: rotate(330deg) skewY(-60deg);    
+}
+li:nth-child(12) p {
+    -webkit-transform: rotate(-345deg);
+    -ms-transform: rotate(-345deg);
+	transform: rotate(-345deg);    
+}
+
+li a {
+    display: block;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid #ffffff;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+} 
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: rgb(238, 238, 238);
+}
+
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.container input:checked ~ .checkmark {
+  background-color: #1F2041;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 120px;
+  height: 15px;
+  margin-right: 10px;
+  border-radius: 5px;  
+  background: rgb(238, 238, 238);
+  outline: none;
+  opacity: 1;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  border: none;
+}
+.slider:hover {
+    background: #ccc;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background: #1F2041;
+  cursor: pointer;
+  border: none;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #1F2041;
+  cursor: pointer;
+  border: none;
+}
+#menu p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+}
+
+#play-button {
+    display: table-cell;
+    vertical-align: middle;
+    border-radius: 50%;
+    width: 90px;
+    max-width: 90px;
+    height: 90px;
+    background-color: rgb(238, 238, 238);
+    overflow: hidden;
+}
+#play-button:hover {
+    background-color: #ccc;
+}
+
+.arrow {
+    display: inline-block;
+    margin-left: 25px;
+    width: 0; 
+    height: 0; 
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 50px solid #1F2041;
+}
+
+.pause {
+    display: none;
+    width: 20px; 
+    height: 50px;
+    margin-left: 20px;
+    border-width: 0px 0px 0px 50px;
+    border-style: double;
+    border-color: #1F2041;
+}
+
+#clock {
+    float: left;
+    display: table-cell;
+    text-align: center;
+    margin: 0 auto;
+    width: 70%;
+}
+.tick {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    margin-top: 10px;
+    margin-left: 20px;
+    background-color:rgb(238, 238, 238);
+    border: 20px solid rgb(238, 238, 238);    
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    transition: background-color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+#cue-box {
+    display: table-cell;
+    float: left;
+    width: 30%;
+    height: 80px;
+    vertical-align: middle;
+}
+#cue {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 28pt;
+    color: #1F2041;
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+</style>
+</head>
+<body>
+<div id="bg">
+<div id="panel_left">
+<div id=circle_of_fifths>
+<ul class="circle" id="maj_circle">
+    <li><a class="fifth" href="#"><div class="text"><p>C</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>G</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>D</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>A</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>E</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>B</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>G♭/F♯</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>D♭/C♯</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>A♭</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>E♭</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>B♭</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>F</p></div></a></li>
+</ul>
+<ul class="circle" id="min_circle">
+	<li><a class="fifth" href="#"><div class="text"><p>a</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>e</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>b</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>f♯</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>c♯</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>g♯</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>eb/d♯</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>b♭/a♯</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>f</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>c</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>g</p></div></a></li>
+    <li><a class="fifth" href="#"><div class="text"><p>d</p></div></a></li>
+</ul>
+<div class="circle" id="center"></div>
+</div>
+</div>
+<div id="panel_right">
+    <p></p>
+    <p></p>
+    <div id="menu">
+        <label class="container"><p>7ths</p>
+            <input type="checkbox" id="sevenths_checkbox">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container"><p>Show notes</p>
+            <input type="checkbox" id="notes_checkbox" checked="checked">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container"><p>Show degree</p>
+            <input type="checkbox" id="degree_checkbox" checked="checked">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container"><p>Metronome</p>
+            <input type="checkbox" id="metronome_checkbox" checked="checked">
+            <span class="checkmark"></span>
+        </label>
+        <div class="slidecontainer">
+            <input type="range" min="20" max="140" value="40" class="slider" id="tempo_slider">
+            <p id="tempo_view">Tempo (40 BPM)</p>
+        </div>
+        <p></p>
+        <a id="play-pause" href="#">
+            <div id="play-button">
+                <div class="arrow"></div>
+                <div class="pause"></div>
+            </div>
+        </a>
+    </div>
+</div>
+<div id=panel_bottom>
+    <div id="clock">
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+    </div>
+    <div id="cue-box"><p id="cue">Chord here</p></div>
+</div>
+</div>
+<audio id="metronome">
+    <source src="audio/Metronome.wav" type="audio/mpeg">
+</audio>
+<audio id="metronome_up">
+    <source src="audio/MetronomeUp.wav" type="audio/mpeg">
+</audio>
+<script>
+
+var major_degrees = ["I", "ii", "iii", "IV", "V", "vi", "vii"];
+var major_degrees = ["I", "ii", "iii", "IV", "V", "vi", "vii"];
+
+var active_keys = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  // Minor
+                   1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // Major
+
+var active_list = [12];  // C major is incl by default
+
+var chordsLUT = [
+    ["Cmaj", "Dmin", "Emin", "Fmaj", "Gmaj", "Amin", "Bdim"],  // C
+    ["Gmaj", "Amin", "Bmin", "Cmaj", "Dmaj", "Emin", "F#dim"],  // G
+    ["Dmaj", "Emin", "F#min", "Gmaj", "Amaj", "Bmin", "C#dim"],  // D
+    ["Amaj", "Bmin", "C#min", "Dmaj", "Emaj", "F#min", "G#dim"],  // A
+    ["Emaj", "F#min", "G#min", "Amaj", "Bmaj", "C#min", "D#dim"],  // E
+    ["Bmaj", "C#min", "D#min", "Emaj", "F#maj", "G#min", "A#dim"],  // B
+    ["F#maj", "G#min", "A#min", "Bmaj", "C#maj", "D#min", "E#dim"],  // Gb
+    ["Dbmaj", "Ebmin", "Fmin", "Gbmaj", "Abmaj", "Bbmin", "Cdim"],  // Db
+    ["Abmaj", "Bbmin", "Cmin", "Dbmaj", "Ebmaj", "Fmin", "Gdim"],  // Ab
+    ["Ebmaj", "Fmin", "Gmin", "Abmaj", "Bbmaj", "Cmin", "Ddim"],  // Eb
+    ["Bbmaj", "Cmin", "Dmin", "Ebmaj", "Fmaj", "Gmin", "Adim"],  // Bb
+    ["Fmaj", "Gmin", "Amin", "Bbmaj", "Cmaj", "Dmin", "Edim"],  // F
+];
+
+var interval;
+
+var cue_text = $("#cue");
+
+var toggle = $("#play-pause");
+var play_icon = $(".arrow");
+var pause_icon = $(".pause");
+var playing = false;
+
+var tempo_slider = document.getElementById("tempo_slider");
+var output = document.getElementById("tempo_view");
+var beat = 0;
+var period = 1/(40 * 1/60000)
+
+var clock = $("#clock");
+
+var metronome_checkbox = $("#metronome_checkbox");
+var met1 = $('audio#metronome_up');
+var met2 = $('audio#metronome');
+
+var degree_checkbox = $("degree_checkbox");
+
+// Get period from tempo slider
+tempo_slider.oninput = function() {
+  output.innerHTML = "Tempo ("+this.value+" BPM)";
+  period = 1/(tempo_slider.value * 1/60000)
+}
+
+var update_keys = function(key, scale, element) {
+    if (key) {  // Major
+        if (active_keys[key*12 + scale] == 1) {
+            element.find(".text").css("background-color","#CC3144");
+            active_keys[key*12 + scale] = 0;
+        }
+        else {
+            active_keys[key*12 + scale] = 1;
+            element.find(".text").css("background-color","#820F19");
+        }
+    }
+    else {  // Minor
+        if (active_keys[key*12 + scale] == 1) {
+            element.find(".text").css("background-color","#A095BC");
+            active_keys[key*12 + scale] = 0;
+        }
+        else {
+            element.find(".text").css("background-color","#1F2041");
+            active_keys[key*12 + scale] = 1;
+        }
+    }
+    active_list = [];
+    for (i = 0; i < 24; i++)
+    {
+        if (active_keys[i] && !active_list.includes(i % 12))
+        {
+            active_list.push(i % 12);  // No minor scales rn
+        }
+    }
+    console.log(active_list);
+}
+
+var display_chord = function() {
+    if (active_list.length > 0) {
+        cue_text.css("opacity","0");
+        var rand_key = active_list[Math.floor(Math.random()*active_list.length)];
+        if (rand_key > 11)
+        {
+            rand_key = rand_key % 12;  // No minor scales
+        }
+        var rand_chord = chordsLUT[rand_key][Math.floor(Math.random()*7)];
+        cue.innerHTML = rand_chord;
+        cue_text.css("opacity","1");
+    }
+    else {
+        cue.innerHTML = "";
+    }
+}
+
+var advance = function(quiet) {
+    if (playing)
+    {
+        if (beat == 0) {
+        clock.children().eq(3).css("background-color","rgb(238,238,238)");
+        if (!quiet)
+        {
+            met1[0].play();
+        }
+        display_chord();
+        }
+        else {
+            clock.children().eq(beat - 1).css("background-color","rgb(238,238,238)");
+            if (!quiet)
+            {
+                met2[0].play();
+            }
+            if (beat == 3)
+            {
+                beat = -1;
+            }
+        }
+        clock.children().eq(beat).css("background-color","#1F2041");
+        beat += 1;
+        setTimeout(function(){ // Recursively call advance function with period from slider
+            if (metronome_checkbox.is(":checked"))
+            {
+                advance(false);
+            }
+            else
+            {
+                advance(true);
+            }
+        }, period);
+    }
+}
+
+$(document).ready(function(){
+    $('#min_circle li').click(function() {
+        update_keys(0, $(this).index(), $(this));
+    });
+    $('#maj_circle li').click(function() {
+        update_keys(1, $(this).index(), $(this));
+    });
+    toggle.click(function() { 
+        if (playing == true)  // Stop
+        {
+            playing = false;
+            play_icon.css("display","inline-block");
+            pause_icon.css("display","none");
+            for (i = 0; i < 4; i++)
+            {
+                clock.children().eq(i).css("background-color","rgb(238,238,238)");
+            }
+            beat = 0;
+            cue_text.css("opacity","0");
+        }
+        else  // Start
+        {
+            playing = true;
+            play_icon.css("display","none");
+            pause_icon.css("display","inline-block");
+            if (metronome_checkbox.is(":checked"))
+            {
+                advance(false);
+            }
+            else
+            {
+                advance(true);
+            }
+        }
+        });
+});
+</script>
+</body>
+</html>)
