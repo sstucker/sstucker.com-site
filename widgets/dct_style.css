@@ -35,7 +35,7 @@
 }
 
 #circle_of_fifths {
-    transform: scale(0.8);
+    transform: scale(0.7);
     position: relative;
 
 }
@@ -514,7 +514,7 @@ li a {
     }
 
     #chord-name, #notes-list, #degree {
-        font-size: 44pt;
+        font-size: 36pt;
     }
 
 }
