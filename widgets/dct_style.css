@@ -5,19 +5,17 @@
 }
 
 .text p, .menu p, .cue, #cp {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', 'Arial', sans-serif;
 }
 
 #cp {
-    position: absolute;
-    left: 20px;
-    top: 5px;
+    left: 0;
     text-align: center;
+    font-size: 10pt;
 }
 
 #cp a {
     text-decoration: none;
-    font-size: 12;
     font-weight: bold;
     color: #CC3144;
 }
@@ -30,15 +28,15 @@
 #panel_left {
     position: relative;
     display: block;
-    width: 410px;
-    height: 430px;
+    width: 360px;
+    height: 360px;
     float: left;
 }
 
 #circle_of_fifths {
+    transform: scale(0.8);
     position: relative;
-    margin-left: 10px;
-    margin-top: 10px;
+
 }
 
 .circle {
@@ -431,7 +429,7 @@ li a {
     text-align: center;
     display: block;
     white-space: nowrap;
-    width: 410px;
+    width: 360px;
 }
 
 #keyboard img {
@@ -442,7 +440,7 @@ li a {
     float: left;
     display: table-cell;
     text-align: center;
-    width: 410px;
+    width: 360px;
     border-radius: 20px;
     white-space: nowrap;
 }
@@ -464,7 +462,7 @@ li a {
     display: table-cell;
     float: left;
     text-align: center;
-    width: 410px;
+    width: 360px;
     padding-top: 40px;
     padding-bottom: 20px;
     vertical-align: middle;

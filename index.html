@@ -8,6 +8,18 @@
 <link rel="icon" href="img/histgif80.png">
 <style>
 
+	*:focus {
+		outline: none;
+	}
+
+	body {
+		background-image: none;
+		background-position: center;
+		background-attachment: fixed;
+		background-size: 100%;
+		background-repeat: repeat;
+	}
+
 	p
 	{
 		font-family: "Work Sans",sans-serif;
@@ -15,21 +27,11 @@
 	
 	#bg
 	{
-		
 		margin: 0 auto;
-		background: #FEFEFE;
-		width: 600px;
+		max-width: 600px;
 		height: 100%;
 		
 	}
-	
-	#menu
-	{
-		overflow: visible;
-		margin-top: 45%;
-		text-align: center;
-
-	}	
 
 	#wordmark
 	{
@@ -39,20 +41,33 @@
 		font-size: 26pt;
 	}
 
+	#menu {
+		margin: 30%;
+	}
+
 	#links
 	{
+		position: fixed;
+		display: table-cell;
+		text-align: center;
 		width: 100%;
+		height: 100px;
 	}
 
-	#links img
-	{
-		width: 54px;
-		margin: 5px;
+	#icon {
+		height:60px;
+		width: 60px;
+		margin: 10px;
 		background: black;
+		float: left;
 	}
 
-	#links img:hover {
-		background: url('img/histgif400.gif');
+	#icon img {
+		margin: -1px;
+	}
+
+	#icon:hover {
+		background-image: url("img/histgif400.gif");
 	}
 
 	#footer
@@ -86,9 +101,9 @@
 
 				<div id='links'>
 
-				<a href='https://www.linkedin.com/in/stephen-tucker-ab8817128'><img src='img/linkedin.svg'></a>
-				<a href='https://www.github.com/sstucker'><img src='img/github.svg'></a>
-				<a href='https://www.instagram.com/xtxve'><img src='img/instagram.svg'></a>
+				<div id="icon"><a href='https://www.linkedin.com/in/stephen-tucker-ab8817128'><img src='img/linkedin.svg'></a></div>
+				<div id="icon"><a href='https://www.github.com/sstucker'><img src='img/github.svg'></a></div>
+				<div id="icon"><a href='https://www.instagram.com/xtxve'><img src='img/instagram.svg'></a></div>
 
 				</div>
 				
@@ -104,6 +119,19 @@
 	
 	</div> <!--- bg --->
 	
+	<script>
+		$("#footer p").hover(
+			function() {
+			$("body").css("background-image","url('img/histgif400.gif')");
+			$("#menu").css("display","none");
+			},
+			function() {
+			$("body").css("background-image","");
+			$("#menu").css("display","");
+			}
+		)
+	</script>
+
 </body>
 	
 </html>
