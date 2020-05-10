@@ -2,6 +2,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diatonic Chord Training</title>
     <link rel="icon" href="img/dct_favicon.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -151,44 +152,46 @@
         <div id="panel_right">
             <p></p>
             <p></p>
-            <div class="menu">
-                <label class="container">
-                    <p>Scale anarchy</p>
-                    <input type="checkbox" id="multiple_checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="container">
-                    <p>Show chord name</p>
-                    <input type="checkbox" id="chord_checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="container">
-                    <p>Show degree</p>
-                    <input type="checkbox" id="degree_checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="container">
-                    <p>Show notes</p>
-                    <input type="checkbox" id="notes_checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="container">
-                    <p>Show keyboard</p>
-                    <input type="checkbox" id="piano_checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            <div class="menu">
-                <label class="container">
-                    <p>Metronome</p>
-                    <input type="checkbox" id="metronome_checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                </label>
-                <div class="slidecontainer">
-                    <input type="range" min="20" max="140" value="40" class="slider" id="tempo_slider">
-                    <p id="tempo_view">Tempo (40 BPM)</p>
+            <div class="menus">
+                <div class="menu">
+                    <label class="container">
+                        <p>Scale anarchy</p>
+                        <input type="checkbox" id="multiple_checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">
+                        <p>Show chord name</p>
+                        <input type="checkbox" id="chord_checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">
+                        <p>Show degree</p>
+                        <input type="checkbox" id="degree_checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">
+                        <p>Show notes</p>
+                        <input type="checkbox" id="notes_checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">
+                        <p>Show keyboard</p>
+                        <input type="checkbox" id="piano_checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                    </label>
                 </div>
-                <p></p>
+                <div class="menu">
+                    <label class="container">
+                        <p>Metronome</p>
+                        <input type="checkbox" id="metronome_checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                    </label>
+                    <div class="slidecontainer">
+                        <input type="range" min="20" max="140" value="40" class="slider" id="tempo_slider">
+                        <p id="tempo_view">Tempo (40 BPM)</p>
+                    </div>
+                    <p></p>
+                </div>
             </div>
         </div>
         <div id="cue-box">
