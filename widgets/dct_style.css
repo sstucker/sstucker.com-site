@@ -4,6 +4,24 @@
     min-width: 
 }
 
+.text p, .menu p, .cue, #cp {
+    font-family: 'Roboto', sans-serif;
+}
+
+#cp {
+    position: absolute;
+    left: 20px;
+    top: 5px;
+    text-align: center;
+}
+
+#cp a {
+    text-decoration: none;
+    font-size: 12;
+    font-weight: bold;
+    color: #CC3144;
+}
+
 #panel_right {
     position: relative;
     text-align: left;
@@ -100,9 +118,8 @@ li {
 
 .text p {
     display: block;
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
-    font-size: 14pt;
+    font-size: 15pt;
     color: #ffffff;
 }
 
@@ -359,7 +376,6 @@ li a {
 }
 
 .menu p {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 14pt;
 }
 
@@ -458,7 +474,6 @@ li a {
 
 .cue {
     display: inline;
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 28pt;
     line-height: 12pt;
@@ -482,7 +497,8 @@ li a {
 }
 
 /* Mobile */
-@media (max-width: 768px) {
+@media only screen
+     and (max-width: 768px) {
 
     #panel_right, #keyboard, #cue-box, #clock {
         width: 100%;
