@@ -1,25 +1,26 @@
 #bg {
     margin: 0 auto;
-    width: 90%;
+    max-width: 960px;
+    min-width: 
 }
 
 #panel_right {
     position: relative;
-    display: table-cell;
-    text-align: center;
+    text-align: left;
 }
 
 #panel_left {
     position: relative;
     display: block;
-    width: 450px;
-    height: 450px;
+    width: 410px;
+    height: 430px;
     float: left;
 }
 
 #circle_of_fifths {
     position: relative;
-    margin: 25px;
+    margin-left: 10px;
+    margin-top: 10px;
 }
 
 .circle {
@@ -95,7 +96,6 @@ li {
     -ms-transform: skewY(60deg) rotate(15deg);
     transform: skewY(60deg) rotate(15deg);
     padding-top: 4px;
-
 }
 
 .text p {
@@ -378,6 +378,10 @@ li a {
     background-color: #ccc;
 }
 
+*:focus {
+    outline: none;
+}
+
 .arrow {
     display: inline-block;
     margin-left: 12px;
@@ -411,7 +415,7 @@ li a {
     text-align: center;
     display: block;
     white-space: nowrap;
-    width: 450px;
+    width: 410px;
 }
 
 #keyboard img {
@@ -422,9 +426,7 @@ li a {
     float: left;
     display: table-cell;
     text-align: center;
-    vertical-align: middle;
-    margin: 0 auto;
-    width: 450px;
+    width: 410px;
     border-radius: 20px;
     white-space: nowrap;
 }
@@ -446,7 +448,7 @@ li a {
     display: table-cell;
     float: left;
     text-align: center;
-    width: 450px;
+    width: 410px;
     padding-top: 40px;
     padding-bottom: 20px;
     vertical-align: middle;
@@ -477,4 +479,26 @@ li a {
     display: inline;
     color: #4A4A4A;
     margin-left: 20px;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+
+    #panel_right, #keyboard, #cue-box, #clock {
+        width: 100%;
+    }
+
+    #panel_right {
+        text-align: center;
+    }
+
+    .menu {
+        width: 40%;
+        margin-left: 10%;
+    }
+
+    #chord-name, #notes-list, #degree {
+        font-size: 44pt;
+    }
+
 }
