@@ -482,7 +482,7 @@ li a {
 }
 
 /* Mobile */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
 
     #panel_right, #keyboard, #cue-box, #clock {
         width: 100%;
@@ -495,6 +495,7 @@ li a {
     .menu {
         width: 40%;
         margin-left: 10%;
+        bottom: 0;
     }
 
     #chord-name, #notes-list, #degree {
