@@ -184,10 +184,10 @@
                     <p id="tempo_view">Tempo (40 BPM)</p>
                 </div>
                 <p></p>
-                <a id="play-pause" href="#">
+                <a id="play-stop" href="#">
                     <div id="play-button">
                         <div class="arrow"></div>
-                        <div class="pause"></div>
+                        <div class="stop"></div>
                     </div>
                 </a>
             </div>
@@ -329,9 +329,9 @@
         var scale_degree_text = $("#degree")
         var notes_list_text = $("#notes-list");
 
-        var toggle = $("#play-pause");
+        var toggle = $("#play-stop");
         var play_icon = $(".arrow");
-        var pause_icon = $(".pause");
+        var stop_icon = $(".stop");
         var playing = false;
 
         var tempo_slider = document.getElementById("tempo_slider");
@@ -355,6 +355,9 @@
 
         var maj_circle = $("#maj_circle");
         var min_circle = $("#min_circle");
+
+        var last_key = -1;
+        var last_deg = -1;
 
         // Get period from tempo slider
         tempo_slider.oninput = function () {
@@ -415,6 +418,12 @@
                 cue.css("opacity", "0");
                 var rand_key = active_keys[Math.floor(Math.random() * active_keys.length)];
                 var rand_deg = Math.floor(Math.random() * 7);
+                if ((rand_key == last_key) && (rand_deg == last_deg))
+                {
+                    rand_deg = (rand_deg + 2) % 7;
+                }
+                last_deg = rand_deg;
+                last_key = rand_key;
                 if (chord_checkbox.is(":checked")) {
                     var rand_chord = chordsLUT[rand_key % 12][rand_deg];
                     chord_name_text.text(rand_chord);
@@ -502,7 +511,7 @@
                 if (playing == true) {  // Stop
                     playing = false;
                     play_icon.css("display", "inline-block");
-                    pause_icon.css("display", "none");
+                    stop_icon.css("display", "none");
                     for (i = 0; i < 4; i++) {
                         clock.children().eq(i).css("background-color", "rgb(238,238,238)");
                     }
@@ -512,7 +521,7 @@
                 else {  // Start
                     playing = true;
                     play_icon.css("display", "none");
-                    pause_icon.css("display", "inline-block");
+                    stop_icon.css("display", "inline-block");
                     if (metronome_checkbox.is(":checked")) {
                         advance(false);
                     }

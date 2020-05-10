@@ -38,21 +38,22 @@
 }
 
 #maj_circle {
-    width: 32em;
-    height: 32em;
+    width: 400px;
+    height: 400px;
 }
 
 #min_circle {
-    width: 22em;
-    height: 22em;
-    transform: translate(5em, 5em);
+    width: 280px;
+    height: 280px;
+    transform: translate(58px, 58px);
+    border: 2px solid white;
 }
 
 #center {
     background: #FFFFFF;
     width: 10em;
     height: 10em;
-    transform: translate(11em, 11em);
+    transform: translate(120px, 120px);
 }
 
 #min_circle .text {
@@ -77,6 +78,7 @@
 }
 
 li {
+    border: 1px solid white;
     overflow: hidden;
     position: absolute;
     top: 0;
@@ -95,7 +97,7 @@ li {
     -webkit-transform: skewY(60deg) rotate(15deg);
     -ms-transform: skewY(60deg) rotate(15deg);
     transform: skewY(60deg) rotate(15deg);
-    padding-top: 20px;
+    padding-top: 4px;
 
 }
 
@@ -384,14 +386,13 @@ li a {
     border-left: 50px solid #1F2041;
 }
 
-.pause {
+.stop {
+    display: inline-block;
+    margin-left: 25px;
     display: none;
-    width: 20px;
-    height: 50px;
-    margin-left: 20px;
-    border-width: 0px 0px 0px 50px;
-    border-style: double;
-    border-color: #1F2041;
+    width: 45px;
+    height: 45px;
+    background-color: #1F2041;
 }
 
 #score {
@@ -399,7 +400,7 @@ li a {
     display: table-cell;
     text-align: center;
     margin: 0 auto;
-    width: 50%;
+    width: 20%;
     height: 25%;
 }
 
@@ -408,7 +409,7 @@ li a {
     display: table-cell;
     text-align: center;
     margin: 0 auto;
-    width: 25%;
+    width: 20%;
     height: 100%;
 }
 
@@ -421,7 +422,7 @@ li a {
     display: table-cell;
     text-align: center;
     margin: 0 auto;
-    width: 25%;
+    width: 20%;
     height: 100%;
     /* background-color: #fafafa; */
     border-radius: 20px;
@@ -431,7 +432,7 @@ li a {
 #cue-box {
     display: table-cell;
     float: left;
-    width: 25%;
+    width: 30%;
     height: 100%;
     margin-left: 30px;
     padding-top: 20px;
