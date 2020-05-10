@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Diatonic Chord Training</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="myscripts.js"></script> 
     <style>
         @import url("dct_style.css");
     </style>
@@ -15,140 +14,143 @@
         <div id="panel_left">
             <div id=circle_of_fifths>
                 <ul class="circle" id="maj_circle">
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>C</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>G</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>D</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>A</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>E</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>B</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>G♭/F♯</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>D♭/C♯</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>A♭</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>E♭</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>B♭</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>F</p>
                             </div>
                         </a></li>
                 </ul>
                 <ul class="circle" id="min_circle">
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>a</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>e</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>b</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>f♯</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>c♯</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>g♯</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>eb/d♯</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>b♭/a♯</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>f</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>c</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>g</p>
                             </div>
                         </a></li>
-                    <li><a class="fifth" href="#">
+                    <li><a class="fifth" href="javascript:void();">
                             <div class="text">
                                 <p>d</p>
                             </div>
                         </a></li>
                 </ul>
-                <div class="circle" id="center"></div>
+                <div class="circle" id="center">
+                    <a id="play-stop" href="javascript:void();">
+                        <div id="play-button">
+                            <div class="arrow"></div>
+                            <div class="stop"></div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
         <div id="panel_right">
             <p></p>
             <p></p>
-            <div id="menu">
-                <!-- <label class="container"><p>7s</p>
-            <input type="checkbox" id="sevens_checkbox">
-            <span class="checkmark"></span>
-        </label> -->
+            <div class="menu">
                 <label class="container">
                     <p>Scale anarchy</p>
                     <input type="checkbox" id="multiple_checkbox">
@@ -174,6 +176,8 @@
                     <input type="checkbox" id="piano_checkbox" checked="checked">
                     <span class="checkmark"></span>
                 </label>
+            </div>
+            <div class="menu">
                 <label class="container">
                     <p>Metronome</p>
                     <input type="checkbox" id="metronome_checkbox" checked="checked">
@@ -184,28 +188,19 @@
                     <p id="tempo_view">Tempo (40 BPM)</p>
                 </div>
                 <p></p>
-                <a id="play-stop" href="#">
-                    <div id="play-button">
-                        <div class="arrow"></div>
-                        <div class="stop"></div>
-                    </div>
-                </a>
             </div>
         </div>
-        <div id=panel_bottom>
-            <div id="clock">
-                <div class="tick"></div>
-                <div class="tick"></div>
-                <div class="tick"></div>
-                <div class="tick"></div>
-            </div>
-            <div id="cue-box">
-                <p id="chord-name" class="cue">Cmaj</p>
-                <p id="notes-list" class="cue">C, E, G</p>
-                <p id="degree" class="cue">I</p>
-            </div>
-            <div id="keyboard"><img src="img/piano/blank.svg"></div>
-            <div id="score"><img></div>
+        <div id="cue-box">
+            <p id="chord-name" class="cue">Cmaj</p>
+            <p id="notes-list" class="cue">C, E, G</p>
+            <p id="degree" class="cue">I</p>
+        </div>
+        <div id="keyboard"><img src="img/piano/blank.svg"></div>
+        <div id="clock">
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
         </div>
     </div>
     <audio id="metronome">
@@ -216,13 +211,15 @@
     </audio>
     <script>
 
-        var major_colors = ["rgb(255,0,0)",
+        var major_colors = [
+            "rgb(255,0,0)",
             "rgb(255,176,20)",
             "rgb(239, 230, 0)",
             "rgb(0,211,0)",
             "rgb(72,0,255)",
             "rgb(184,0,229)",
             "rgb(255,0,203)"];
+
         var major_degrees = ["I", "ii", "iii", "IV", "V", "vi", "vii°"];
         var minor_degrees = ["III", "iv", "v", "VI", "VII", "i", "ii°"];
 
@@ -496,9 +493,42 @@
         }
 
         $(document).ready(function () {
+            // Checkbox listeners
             multiple_checkbox.change(function () {
                 if ((!this.checked) && (active_keys.length > 0)) {
                     active_keys = [active_keys[active_keys.length - 1]]; // Truncate to last selected key
+                }
+            });
+            piano_checkbox.change(function () {
+                if (!this.checked) {
+                    keyboard.parent().css("display","none");
+                }
+                if (this.checked) {
+                    keyboard.parent().css("display","table-cell");
+                }
+            });
+            chord_checkbox.change(function () {
+                if (!this.checked) {
+                    chord_name_text.css("display","none");
+                }
+                if (this.checked) {
+                    chord_name_text.css("display","");
+                }
+            });
+            degree_checkbox.change(function () {
+                if (!this.checked) {
+                    scale_degree_text.css("display","none");
+                }
+                if (this.checked) {
+                    scale_degree_text.css("display","");
+                }
+            });
+            notes_checkbox.change(function () {
+                if (!this.checked) {
+                    notes_list_text.css("display","none");
+                }
+                if (this.checked) {
+                    notes_list_text.css("display","");
                 }
             });
             $('#min_circle li').click(function () {
@@ -534,4 +564,4 @@
     </script>
 </body>
 
-</html>)
+</html>
