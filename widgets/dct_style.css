@@ -5,19 +5,20 @@
 }
 
 .text p, .menu p, .cue, #cp {
-    font-family: 'Roboto', 'Arial', sans-serif;
+    font-family: sans-serif;
 }
 
 #cp {
+    float: left;
     left: 0;
     text-align: center;
     font-size: 10pt;
+    font-weight: bold;
+    color: #CC3144;
 }
 
 #cp a {
     text-decoration: none;
-    font-weight: bold;
-    color: #CC3144;
 }
 
 #panel_right {
